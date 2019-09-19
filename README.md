@@ -419,10 +419,10 @@ Oba, powyższe polecenia tworzenia linii poziomej nie posiadają dodatkowych opc
 	* poprawiono wyrównywanie tekstu w niektórych blokach tekstu (np. usunięto justowanie w bibliografii);
 	* poprawiono formatowanie [kodów źródłowych](https://github.com/sadowski-marcin/cssdoc#kod-źródłowy) `pre`.
 * wersja 1.1 (z dn. 20.3.2018)
-	* dodano graficzną (ozdobną) wersję linii poziomej (podrozdział ……);
+	* dodano graficzną (ozdobną) wersję [linii poziomej](https://github.com/sadowski-marcin/cssdoc#linia-pozioma);
 	* poprawiono wyświetlanie pozycji literatury/bibliografii;
 	* poprawiono wyświetlanie przypisów dolnych (na końcu rozdziału);
 	* usunięto dwukolumnowe drukowanie spisu treści.
 * wersja 1.2 (z dn. 12.4.2018)
-	* dodano automatyczne tworzenie linków „#” przy nagłówkach pozwalających zapisać „zakładkę” do tego nagłówka (podrozdział ……);
-	* poprawiono formatowanie cytatów (podrozdział ……).
+	* dodano automatyczne tworzenie [linków „#”](https://github.com/sadowski-marcin/cssdoc#spis-treści) przy nagłówkach pozwalających zapisać „zakładkę” do tego nagłówka;
+	* poprawiono formatowanie [cytatów](https://github.com/sadowski-marcin/cssdoc#cytaty).
