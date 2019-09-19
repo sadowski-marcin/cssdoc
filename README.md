@@ -93,3 +93,7 @@ Do tytułowania i oddzielania rozdziałów, podrozdziałów i mniejszych partii 
 Włączając _javascript_ opisany w podrozdziale …… nagłówki od `h1` do `h4` uzupełniane będą automatycznie numeracją urzędową – jak to widać powyżej tego akapitu.
 
 Nagłówki wstępu, przedmowy, zakończenia, dodatków etc. zazwyczaj nie posiadają numeracji. Aby wstrzymać dodawanie numeracji do nagłówka należy użyć klasy _nonumber_, np. `<h1 class="nonumber">…</h1>`. Należy jednak pamiętać, iż nie wstrzymuje to numerowania podrozdziałów! Z tego powodu stosując klasę nonumber do danego nagłówka nadrzędnego, wymagane jest dopisywanie jej do wszystkich nagłówków niższych rzędów.
+
+### Akapity
+
+…
