@@ -63,7 +63,7 @@ przy czym:
 	* numerowanie tabel,
 	* dopisywanie do odnośników odwołujących się do elementów danego dokumentu numerów tych elementów;
 3. dokładna wartość odnośnika `src` do pliku _document.js_ zależy od lokalizacji tego pliku na dysku względem pliku _.html_ z treścią dokumentu;
-4. dwa ostatnie polecenia `<script` odpowiedzialne są za obsługę wzorów matematycznych (podrozdział ……).
+4. dwa ostatnie polecenia `<script` odpowiedzialne są za obsługę [wzorów matematycznych](https://github.com/sadowski-marcin/cssdoc#wzory-matematyczne).
 
 ## Struktura dokumentu
 
@@ -91,13 +91,13 @@ który powoduje utworzenie nowej strony przeznaczonej na stopkę redakcyjną. We
 
 Do tytułowania i oddzielania rozdziałów, podrozdziałów i mniejszych partii dokumentu, w ramach „CSS Document” zdefiniowane zostały nagłówki sześciu poziomów: `h1`, `h2`, `h3`, `h4`, `h5` oraz `h6`. Nagłówki h1 składane są na wydruku począwszy od nowej strony, pozostałe natomiast – w sposób ciągły.
 
-Włączając _javascript_ opisany w podrozdziale …… nagłówki od `h1` do `h4` uzupełniane będą automatycznie numeracją urzędową – jak to widać powyżej tego akapitu.
+Włączając [_javascript_](https://github.com/sadowski-marcin/cssdoc#struktura-pliku) nagłówki od `h1` do `h4` uzupełniane będą automatycznie numeracją urzędową – jak to widać powyżej tego akapitu.
 
 Nagłówki wstępu, przedmowy, zakończenia, dodatków etc. zazwyczaj nie posiadają numeracji. Aby wstrzymać dodawanie numeracji do nagłówka należy użyć klasy _nonumber_, np. `<h1 class="nonumber">…</h1>`. Należy jednak pamiętać, iż nie wstrzymuje to numerowania podrozdziałów! Z tego powodu stosując klasę nonumber do danego nagłówka nadrzędnego, wymagane jest dopisywanie jej do wszystkich nagłówków niższych rzędów.
 
 ### Akapity
 
-Treść akapitów obejmuje się, zgodnie ze standardem HTML w znaczniki `p`. Wszystkie akapity, poza pierwszym, posiadają wcięcie pierwszej linii. W sytuacji, kiedy wcięcie akapitowe nie jest pożądane (np. kontynuując akapit po liście wypunktowanej lub numerowanej), znacznik p należy uzupełnić klasą _noindent_: `<p class="noindent">…</p>` (patrz przykład w podrozdziale …… poświęconym listom).
+Treść akapitów obejmuje się, zgodnie ze standardem HTML w znaczniki `p`. Wszystkie akapity, poza pierwszym, posiadają wcięcie pierwszej linii. W sytuacji, kiedy wcięcie akapitowe nie jest pożądane (np. kontynuując akapit po liście wypunktowanej lub numerowanej), znacznik p należy uzupełnić klasą _noindent_: `<p class="noindent">…</p>`.
 
 Wszystkie akapity, włącznie z pierwszym, są justowane (wyrównane zarówno do lewej, jak i prawej strony). Aby wymusić wyrównanie tylko do lewej lub prawej strony, albo do środka, należy posłużyć się klasami _left_, _right_ albo _center_, jak na przykładzie poniżej:
 
@@ -182,9 +182,9 @@ Aby umieścić w dokumencie ilustrację z podpisem stosujemy następującą sekw
 </p>
 ```
 
-Włączając _javascript_ opisany w podrozdziale …… wszystkie rysunki uzyskują automatycznie numerację urzędową (analogiczną do numeracji nagłówków), z przedrostkiem „Rys.”. Numeracja jest ciągła w obrębie rozdziału (nagłówka `h1`).
+Włączając [_javascript_](https://github.com/sadowski-marcin/cssdoc#struktura-pliku) wszystkie rysunki uzyskują automatycznie numerację urzędową (analogiczną do numeracji nagłówków), z przedrostkiem „Rys.”. Numeracja jest ciągła w obrębie rozdziału (nagłówka `h1`).
 
-Identyfikator `id` (w przykładzie „rysKotek”) służy do odwołania się wewnątrz dokumentu do danej ilustracji – patrz podrozdział …….
+Identyfikator `id` (w przykładzie „rysKotek”) służy do odwołania się wewnątrz dokumentu do danej ilustracji – patrz opis [odnośników](https://github.com/sadowski-marcin/cssdoc#odnośniki).
 
 Ilustracje można również zamieszczać bezpośrednio w tekście, wówczas używamy jedynie znacznika `<img src="…" />`.
 
@@ -194,9 +194,9 @@ Specyfikacja „CSS Document” zawiera predefiniowane style do formatowania tab
 
 Aby wymusić wyrównanie tekstu do lewej lub do prawej krawędzi komórki, albo do środka jej szerokości, znacznik `td` należy uzupełnić o klasę _left_, _right_ albo _center_, tj. np. `<td class="center">… … …</td>`.
 
-W celu nadania tabeli opisu wystarczy w obrębie znacznika `table` dodać polecenie `<caption>…</caption>`. Dodatkowo włączając _javascript_ opisany w podrozdziale …… wszystkie tabele uzyskują automatyczną numerację urzędową (analogiczną do numeracji nagłówków), z przedrostkiem „Tabela”. Numeracja ta jest ciągła w obrębie rozdziału (nagłówka `h1`).
+W celu nadania tabeli opisu wystarczy w obrębie znacznika `table` dodać polecenie `<caption>…</caption>`. Dodatkowo włączając [_javascript_](https://github.com/sadowski-marcin/cssdoc#struktura-pliku) wszystkie tabele uzyskują automatyczną numerację urzędową (analogiczną do numeracji nagłówków), z przedrostkiem „Tabela”. Numeracja ta jest ciągła w obrębie rozdziału (nagłówka `h1`).
 
-Dodatkowy identyfikator _id_ dla znacznika `table` służy do odwołania się wewnątrz dokumentu do danej tabeli – patrz podrozdział …….
+Dodatkowy identyfikator _id_ dla znacznika `table` służy do odwołania się wewnątrz dokumentu do danej tabeli – patrz opis [odnośników](https://github.com/sadowski-marcin/cssdoc#odnośniki).
 
 Zbiorczo, opisane powyżej możliwości formatowania tabel przedstawia poniższy kod źródłowy:
 
@@ -243,7 +243,7 @@ Odwołania do elementów w danym dokumencie tworzymy zgodnie z regułami języka
 * znacznik elementu, do którego chcemy się odwołać uzupełniamy unikatowym identyfikatorem _id_,
 * parametr `href` odnośnika `a` uzyskuje ww. unikatowy identyfikator poprzedzony znakiem #.
 
-W specyfikacji „CSS Document”, dla odnośników wskazujących na elementy w danym dokumencie, stworzona została klasa _ref_. Dodanie jej do odnośnika `a` (tj. użycie polecenia `<a href="#hNagNumer" class="ref">rozdziale</a>`) razem z użyciem _javascript_ opisanego w podrozdziale ……, włącza dodatkową numerację referencyjną. Na przykład otrzymujemy wówczas odnośniki typu: „szczegóły opisane są w podrozdziale 1.2”, „jest to przedstawione na rysunku 2.1” albo „wartości współczynników zamieszczono w tabeli 2.2”.
+W specyfikacji „CSS Document”, dla odnośników wskazujących na elementy w danym dokumencie, stworzona została klasa _ref_. Dodanie jej do odnośnika `a` (tj. użycie polecenia `<a href="#hNagNumer" class="ref">rozdziale</a>`) razem z użyciem [_javascript_](https://github.com/sadowski-marcin/cssdoc#struktura-pliku), włącza dodatkową numerację referencyjną. Na przykład otrzymujemy wówczas odnośniki typu: „szczegóły opisane są w podrozdziale 1.2”, „jest to przedstawione na rysunku 2.1” albo „wartości współczynników zamieszczono w tabeli 2.2”.
 
 Ostatecznie:
 
@@ -288,7 +288,7 @@ Cytaty oznaczamy znacznikiem `blockquote` (z pominięciem obejmującego go `p`).
 <blockquote>Taki cytat zawiera jeden, długi akapit, jednakże bez dodatkowego wcięcia pierwszego wiersza. Wewnątrz cytowanego tekstu można stosować wyróżnienienia, np. <em>kursywę</em> lub <strong>pogrubienie</strong>. Tekst bloku cytowanego jest justowana, czyli wyrównana do lewej i prawej krawędzi strony.</blockquote>
 ```
 
-W razie potrzeby zacytowania więcej niż jednego akapitu, listy (wypunktowanej lub numerowanej) albo ilustracji, można odpowiednie bloki `p`, `ol`, `ul` albo definiujące ilustrację z podpisem (opisane w rozdziale ……) objąć wspólnie blokiem blockquote:
+W razie potrzeby zacytowania więcej niż jednego akapitu, listy (wypunktowanej lub numerowanej) albo ilustracji, można odpowiednie bloki `p`, `ol`, `ul` albo definiujące [ilustrację z podpisem](https://github.com/sadowski-marcin/cssdoc#ilustracje) objąć wspólnie blokiem blockquote:
 
 ```html
 <blockquote>
@@ -310,7 +310,7 @@ Możliwe jest również zagnieżdżanie cytowań na kształt popularnych na form
 Aby umieścić dłuższy (np. wielolinijkowy) kod źródłowy wewnątrz dokumentu obejmujemy go wewnątrz blok `<pre> … … … </pre>` zgodnie z zasadami języka HTML. W szczególności należy pamiętać o zamianie wybranych znaków na odpowiednie encje. Przede wszystkim dotyczy to symboli „<” na `&lt;`, „>” na `&gt;`. Jeśli użyjesz znaku mniejszości „<” lub większości „>”, przeglądarka może pomieszać je z tagami języka HTML, a przez to niewłaściwie wyświetlić dokument.
 
 Taki blok składany jest czcionką o stałej szerokości oraz wyróżniony szarym tłem i ramką.
-Krótkie fragmenty kodu można umieszczać wewnątrz akapitów `p` z użyciem pisma maszynowego – patrz podrozdział …….
+Krótkie fragmenty kodu można umieszczać wewnątrz akapitów `p` z użyciem [pisma maszynowego](https://github.com/sadowski-marcin/cssdoc#formatowania-w-tekście).
 
 ## Dodatki
 
@@ -342,7 +342,7 @@ przy czym identyfikatory `id` muszą być unikatowe względem wszystkich innych 
 
 W tekście, w miejscu w którym ma nastąpić odwołanie do przypisu dolnego umieszcza się polecenie: `<a href="#przypis1" class="fnref">*</a>` gdzie adres odnośnika `a` musi wskazywać na identyfikator odpowiedniego przypisu dolnego (poprzedzony znakiem `#`).
 
-Włączając _javascript_ opisany w podrozdziale …… przypisy dolne uzyskują numerację (oddzielną dla każdego rozdziału `h1`), a w miejscach wskazanych linkiem z klasą _fnref_ wstawiany jest właściwy numer przypisu.
+Włączając [_javascript_](https://github.com/sadowski-marcin/cssdoc#struktura-pliku) przypisy dolne uzyskują numerację (oddzielną dla każdego rozdziału `h1`), a w miejscach wskazanych linkiem z klasą _fnref_ wstawiany jest właściwy numer przypisu.
 
 ### Literatura, bibliografia
 
@@ -360,12 +360,12 @@ przy czym identyfikatory `id` muszą być unikatowe względem wszystkich innych 
 
 Następnie, w tekście, w miejscu w którym wymagane jest odwołanie do pozycji bibliograficznej stosuje się polecenie `<a href="#bibliografia1" class="bibref">[nazwa1]</a>` gdzie adres odnośnika `a` musi wskazywać na identyfikator `id` odpowiedniej pozycji bibliograficznej (poprzedzony znakiem `#`). Nazwy w nawiasach kwadratowych, np. `[nazwa1]`, służą odnalezieniu pozycji bibliograficznej i mogą być tworzone w dowolnym formacie.
 
-Włączając _javascript_ opisany w podrozdziale …… pozycje bibliograficzne uzyskują numerację w postaci _[…]_ zamiast nazw w nawiasach kwadratowych, a w miejscach wskazanych linkiem z klasą _bibref_ wstawiany jest ten numer (również w formacie _[…]_ zamiast nazwy w nawiasach kwadratowych), np. „…najnowszą wersję specyfikacji «CSS Document» znajdziesz na stronie [1]”.
+Włączając [_javascript_](https://github.com/sadowski-marcin/cssdoc#struktura-pliku) pozycje bibliograficzne uzyskują numerację w postaci _[…]_ zamiast nazw w nawiasach kwadratowych, a w miejscach wskazanych linkiem z klasą _bibref_ wstawiany jest ten numer (również w formacie _[…]_ zamiast nazwy w nawiasach kwadratowych), np. „…najnowszą wersję specyfikacji «CSS Document» znajdziesz na stronie [1]”.
 
 W związku z powyższym pozycje bibliografii powinny być posortowane:
 
 * wedle uznania przy włączonym _javascript_ (może to być układ alfabetyczny względem tytułów – zalecany, zgodnie z pojawianiem się odnośników w tekście – niezalecany, albo inny) — wówczas odnajdywanie pozycji w bibliografii następuje po nazwach _[nazwa1]_;
-* alfabetycznie wg. nazw w nawiasach kwadratowych przy wyłączonym _javascript_. — wówczas odnajdywanie pozycji w bibliografii następuje po automatycznie nadanej numeracji, np. _[1]_.
+* alfabetycznie wg. nazw w nawiasach kwadratowych przy wyłączonym _javascript_ — wówczas odnajdywanie pozycji w bibliografii następuje po automatycznie nadanej numeracji, np. _[1]_.
 
 ### Spis treści
 
@@ -381,7 +381,7 @@ W razie potrzeby można wyłączyć dodawanie wybranych nagłówków do spisu tr
 
 ### Wzory matematyczne
 
-W celu poprawnego wyświetlania w dokumencie wzorów należy zastosować bibliotekę [MathJax](https://www.mathjax.org) zgodnie z tym, co zostało zaprezentowane w podrozdziale …….
+W celu poprawnego wyświetlania w dokumencie wzorów należy zastosować bibliotekę [MathJax](https://www.mathjax.org) zgodnie z tym, co zostało zaprezentowane [na początku](https://github.com/sadowski-marcin/cssdoc#struktura-pliku).
 
 Wzory _liniowe_, tj. zawarte w ciągu tekstu akapitu zamieszczamy w notacji TeX obejmując je w `$… … …$` albo `\(… … …\)`, np. `$y = ax^2 + bx + c$`
 
@@ -412,12 +412,12 @@ Oba, powyższe polecenia tworzenia linii poziomej nie posiadają dodatkowych opc
 * wersja RC (z dn. 1.3.2018)
 	* pierwsza, przedoficjalna wersja specyfikacji.
 * wersja 1.0 (z dn. 9.3.2018)
-	* dodano automatyczne tworzenie spisu treści (podrozdział ……) oraz linków „↑” przy nagłówkach pozwalających powrócić do spisu treści;
-	* dodano formatowanie tekstu rozstrzelonego i przekreślonego (podrozdział ……);
-	* zmieniono proponowany, domyślny sposób wyróżniania zwrotu, którego dotyczy przypis na marginesie (rozstrzelenie zamiast podkreślenia, podrozdział ……);
-	* zmieniono metodę tworzenia bibliografii (podrozdział ……);
+	* dodano automatyczne tworzenie [spisu treści](https://github.com/sadowski-marcin/cssdoc#spis-treści) oraz linków „↑” przy nagłówkach pozwalających powrócić do spisu treści;
+	* dodano [formatowanie tekstu](https://github.com/sadowski-marcin/cssdoc#formatowania-w-tekście) rozstrzelonego i przekreślonego;
+	* zmieniono proponowany, domyślny sposób wyróżniania zwrotu, którego dotyczy [przypis na marginesie](https://github.com/sadowski-marcin/cssdoc#przypisy-boczne-na-marginesie);
+	* zmieniono metodę tworzenia [bibliografii](https://github.com/sadowski-marcin/cssdoc#literatura-bibliografia);
 	* poprawiono wyrównywanie tekstu w niektórych blokach tekstu (np. usunięto justowanie w bibliografii);
-	* poprawiono formatowanie kodów źródłowych pre (podrozdział ……).
+	* poprawiono formatowanie [kodów źródłowych](https://github.com/sadowski-marcin/cssdoc#kod-źródłowy) `pre`.
 * wersja 1.1 (z dn. 20.3.2018)
 	* dodano graficzną (ozdobną) wersję linii poziomej (podrozdział ……);
 	* poprawiono wyświetlanie pozycji literatury/bibliografii;
