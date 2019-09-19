@@ -21,7 +21,8 @@ Aby stosować specyfikację „CSS Document” w pierwszym kroku należy pobrać
 
 Dodatkowo udostępnione zostały następujące pliki mogące służyć za żywy przykład implementacji specyfikacji „CSS Document”:
 
-* _index.html_ – niniejszy dokument;
+* _preview.html_ – przykładowy dokument HTML;
+* _preview.pdf_ – przykładowy dokument HTML „wydrukowany” do PDF w przeglądarce Safari 12.1.2 w systemie macOS Mojave 10.14.6;
 * _img.png_ – zdjęcie kotka (przykład ilustracji w dokumencie);
 * _star.png_ – ikona gwiazdki (przykład ilustracji wstawionej w ciąg tekstu);
 
@@ -107,3 +108,82 @@ Wszystkie akapity, włącznie z pierwszym, są justowane (wyrównane zarówno do
 ```
 
 Użycie klas _left_, _right_ albo _center_ nie wyłącza wcięcia akapitowego. Aby poprawić wyrównanie akapitów wyśrodkowanych zaleca się użycie dodakowo klasy _noindent_, tj. `<p class="center noindent">…<p>`.
+
+Treść dokumentu domyślnie składana jest w jednej kolumnie. Dla wyróżnienia pewnych fragmentów można złożyć go w dwóch kolumnach równej szerokości. W tym celu należy użyć klasy _twocolumns_ wg. poniższych przykładów. _Pamiętaj!_ Ten styl nie jest interpretowany przez wszystkie przeglądarki. Szczególnie starsze mogą go pomijać i wyświetlać tekst w jednej szpalcie.
+
+Najprościej zastosować klasę twocolumns do pojedynczego akapitu poprzez użycie polecenia `<p class="twocolumns">…</p>`.
+
+Jeżeli w obrębie tekstu dwukolumnowego chcemy zawrzeć więcej niż jeden akapit, poszczególne akapity oznaczamy zwyczajnie, tj. jako z (bez klasy _twocolumns_), natomiast wszystkie te akapity obejmujemy w znacznik `<div class="twocolumns">…</div>`, tj.
+
+```html
+<div class="twocolumns">
+    <p>…</p>
+    <p>…</p>
+</div>
+```
+
+Wszystkie akapity wewnątrz bloku dwukolumnowego `<div class="twocolumns">` posiadają wcięcie pierwszego wiersza.
+
+W układzie dwukolumnowym można składać również inne elementy strony, np.:
+
+* listy wypunktowane i numerowane;
+* tabele;
+* ilustracje.
+
+### Listy
+
+Specyfikacja „CSS Document” posiada zdefiniowane style list: wypunktowanej `ul`, numerowanej `ol` oraz definicyjnej `dl`.
+
+#### Lista wypunktowana
+
+Lista wypunkowana prezentuje się jak poniżej:
+
+```html
+<ul>
+	<li>…</li>
+	<li>…</li>
+	<li>…</li>
+</ul>
+```
+
+#### Lista numerowana
+
+Listę numerowaną tworzymy za pomocą poleceń:
+
+```html
+<ol>
+	<li>…</li>
+	<li>…</li>
+	<li>…</li>
+</ol>
+```
+
+#### Lista definicyjna
+
+Dodatkowo można tworzyć listy definicyjne:
+
+```html
+<dl>
+    <dt>hasło</dt>
+        <dd>definicja</dd>
+    <dt>hasło</dt>
+        <dd>definicja</dd>
+</dl>
+```
+
+### Ilustracje
+
+Aby umieścić w dokumencie ilustrację z podpisem stosujemy następującą sekwencję poleceń:
+
+```html
+<p class="image" id="rysKotek">
+    <img src="… … …" /><br />
+    <span class="title">opis rysunku</span>
+</p>
+```
+
+Włączając _javascript_ opisany w podrozdziale …… wszystkie rysunki uzyskują automatycznie numerację urzędową (analogiczną do numeracji nagłówków), z przedrostkiem „Rys.”. Numeracja jest ciągła w obrębie rozdziału (nagłówka `h1`).
+
+Identyfikator `id` (w przykładzie „rysKotek”) służy do odwołania się wewnątrz dokumentu do danej ilustracji – patrz podrozdział …….
+
+Ilustracje można również zamieszczać bezpośrednio w tekście, wówczas używamy jedynie znacznika `<img src="…" />`.
