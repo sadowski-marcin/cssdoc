@@ -346,6 +346,67 @@ Włączając _javascript_ opisany w podrozdziale …… przypisy dolne uzyskują
 
 ### Literatura, bibliografia
 
+Tworzenie bibliografii rozpoczyna się od utworzenia rozdziału (zazwyczaj nienumerowanego, tj. z klasą _nonumber_) w skład którego będą wchodziły poszczególne pozycje bibliograficzne. Pojedyncza pozycja bibliograficzna jest akapitem `p` z klasą _bib_ i unikatowym identyfikatorem:
+
+```html
+<h1 class="nonumber">Bibliografia</h1>
+        
+<p class="bib" id="bibliografia1"><span class="bibname">[nazwa1]</span> <em>Tytuł książki</em>, autorzy, wydanie</p>
+
+<p class="bib" id="bibliografia2"><span class="bibname">[nazwa2]</span> <em>Tytuł strony WWW</em> <a href="…">http://…</a></p>
+```
+
+przy czym identyfikatory `id` muszą być unikatowe względem wszystkich innych identyfikatorów w obrębie całego dokumentu.
+
+Następnie, w tekście, w miejscu w którym wymagane jest odwołanie do pozycji bibliograficznej stosuje się polecenie `<a href="#bibliografia1" class="bibref">[nazwa1]</a>` gdzie adres odnośnika `a` musi wskazywać na identyfikator `id` odpowiedniej pozycji bibliograficznej (poprzedzony znakiem `#`). Nazwy w nawiasach kwadratowych, np. `[nazwa1]`, służą odnalezieniu pozycji bibliograficznej i mogą być tworzone w dowolnym formacie.
+
+Włączając _javascript_ opisany w podrozdziale …… pozycje bibliograficzne uzyskują numerację w postaci _[…]_ zamiast nazw w nawiasach kwadratowych, a w miejscach wskazanych linkiem z klasą _bibref_ wstawiany jest ten numer (również w formacie _[…]_ zamiast nazwy w nawiasach kwadratowych), np. „…najnowszą wersję specyfikacji «CSS Document» znajdziesz na stronie [1]”.
+
+W związku z powyższym pozycje bibliografii powinny być posortowane:
+
+* wedle uznania przy włączonym _javascript_ (może to być układ alfabetyczny względem tytułów – zalecany, zgodnie z pojawianiem się odnośników w tekście – niezalecany, albo inny) — wówczas odnajdywanie pozycji w bibliografii następuje po nazwach _[nazwa1]_;
+* alfabetycznie wg. nazw w nawiasach kwadratowych przy wyłączonym _javascript_. — wówczas odnajdywanie pozycji w bibliografii następuje po automatycznie nadanej numeracji, np. _[1]_.
+
+### Spis treści
+
+Tworzenie spisu treści ograniczone zostało do minumum: W miejscu, w którym ma zostać wstawiony wpis treści należy umieścić polecenie `<div id="toc"></div>` a następnie włączyć _javascript_.
+
+Spowoduje to zaprezentowanie w formie dwukolumnowej wszystkich nagłówków od poziomu 1. (`h1`) do poziomu 4. (`h4`) włączenie. Każda pozycja spisu treści będzie linkiem pozwalającym szybko przejść do właściwego fragmentu dokumentu.
+
+Dodatkowo, nagłówki od `h1` do `h4` uzyskują funkcjonalność w postaci:
+* strzałki do góry „↑”, która jest linkiem powrotnym do spisu treści; strzałka ta pojawia się przy prawym marginesie, na wysokości nagłówka, po wskazaniu go kursorem myszki; strzałka ta nie jest uwidaczniana na wydruku.
+* znaku „#”, który jest linkiem do tego nagłówka i pozwala na zapisanie zakładki do tego nagłówka; znak ten pojawia po wskazaniu nagłówka kursorem myszki i nie jest uwidaczniany na wydruku. 
+
+W razie potrzeby można wyłączyć dodawanie wybranych nagłówków do spisu treści. Służy do tego klasa notoc dodawana do tego nagłówka `<h1 class="notoc">nagłówek, który nie zostanie dodany do spisu treści</h1>`
+
+### Wzory matematyczne
+
+W celu poprawnego wyświetlania w dokumencie wzorów należy zastosować bibliotekę [MathJax](https://www.mathjax.org) zgodnie z tym, co zostało zaprezentowane w podrozdziale …….
+
+Wzory _liniowe_, tj. zawarte w ciągu tekstu akapitu zamieszczamy w notacji TeX obejmując je w `$… … …$` albo `\(… … …\)`, np. `$y = ax^2 + bx + c$`
+
+Wzory _blokowe_ tworzymy w oddzielnych akapitach `p` obejmując same wzory w `$$… … …$$`, np.
+
+```html
+<p>$$f(a) = \frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-a} dz\label{eq1}$$</p>
+```
+
+albo obejmując w `\[… … …\]`
+
+```html
+<p>\[\sigma = \sqrt{\frac{1}{N}\sum_{i=1}^N (x_i - \mu)^2}\label{eq2}\]</p>
+```
+
+W powyższych przykładach wzory zostały uzupełnione o etykiety `\label{…}`. Dzięki nim można odwoływać się w tekście do numerów tych wzorów. Odwołanie takie powstaje poprzez umieszczenie w treści akapitu polecenia `\eqref{…}` z nazwą wpisaną w stosowną etykietę, np. stosując polecenia `…podstawiając równanie \eqref{eq1} do \eqref{eq2} dowodzimy, że…` uzyskamy taki fragment „…podstawiając równanie (1) do (2) dowidzimy, że…”.
+
+### Linia pozioma
+
+W celu oddzielenia fragmentów tekstu (lub wyróżnienia takiego tekstu) można wstawić linię poziomą. Do tego służy znacznik `<hr />`.
+
+Przygotowana została również bardziej ozdobna wersja linii poziomej. Uzyskuje się ją poleceniem `<hr class="graph" />`. Jednak bazuje ona na modyfikacji tła elementu strony (dokumentu), więc nie zostanie wydrukowana jeżeli wyłączone jest drukowanie teł.
+
+Oba, powyższe polecenia tworzenia linii poziomej nie posiadają dodatkowych opcji.
+
 ## Lista zmian
 
 * wersja RC (z dn. 1.3.2018)
