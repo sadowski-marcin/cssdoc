@@ -14,7 +14,7 @@ _Pamiętaj!_ Specyfikacja „CSS Document” jest specyfikacją cały czas otwar
 
 ### Pliki do pobrania
 
-Aby stosować specyfikację „CSS Document” w pierwszym kroku należy pobrać ze strony projektu wskazane poniżej pliki _.js_ oraz _.css_:
+Aby stosować specyfikację „CSS Document” w pierwszym kroku należy pobrać ze [strony projektu](http://github.com/sadowski-marcin/cssdoc) wskazane poniżej pliki _.js_ oraz _.css_:
 
 * _document.css_ – główny plik stylów CSS;
 * _document.js_ – implementuje funkcje automatyzujące tworzenie dokumentu (np. numerację nagłówków, rysunków i tabel) oraz pozwalające stosować odnośniki wewnątrz dokumentu.
@@ -96,4 +96,14 @@ Nagłówki wstępu, przedmowy, zakończenia, dodatków etc. zazwyczaj nie posiad
 
 ### Akapity
 
-…
+Treść akapitów obejmuje się, zgodnie ze standardem HTML w znaczniki `p`. Wszystkie akapity, poza pierwszym, posiadają wcięcie pierwszej linii. W sytuacji, kiedy wcięcie akapitowe nie jest pożądane (np. kontynuując akapit po liście wypunktowanej lub numerowanej), znacznik p należy uzupełnić klasą _noindent_: `<p class="noindent">…</p>` (patrz przykład w podrozdziale …… poświęconym listom).
+
+Wszystkie akapity, włącznie z pierwszym, są justowane (wyrównane zarówno do lewej, jak i prawej strony). Aby wymusić wyrównanie tylko do lewej lub prawej strony, albo do środka, należy posłużyć się klasami _left_, _right_ albo _center_, jak na przykładzie poniżej:
+
+```html
+<p class="left">…<p>
+<p class="right">…<p>
+<p class="center">…<p>
+```
+
+Użycie klas _left_, _right_ albo _center_ nie wyłącza wcięcia akapitowego. Aby poprawić wyrównanie akapitów wyśrodkowanych zaleca się użycie dodakowo klasy _noindent_, tj. `<p class="center noindent">…<p>`.
