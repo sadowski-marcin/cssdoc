@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <title>Specyfikacja „CSS Document”</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="Author" content="Marcin Paweł Sadowski" />
+        <link rel="Stylesheet" type="text/css" href="document.css" />
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script type="text/x-mathjax-config">
+              MathJax.Hub.Config({
+                tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
+                TeX: { equationNumbers: {autoNumber: "all"} } });
+        </script>
+        <script type="text/javascript" src="document.js"></script>
+    </head>
+    <body>
+        <div id="title"><span lang="en">Specyfikacja<br />CSS Document</span></div>
+        
+        <div id="subtitle">arkusz stylów dokumentu drukowanego</div>
+        
+        <div id="author">pomysł i opracowanie<br />Marcin Paweł Sadowski</div>
+        
+        <div id="edition">wersja 1.2.0</div>
+        
+        <div id="imprint">
+        	<p><strong>Autor:</strong> Marcin Paweł Sadowski (<a href="mailto:sadowski.marcin@icloud.com">sadowski.marcin@icloud.com</a>)</p>
+            <p><strong>Skład komputerowy:</strong> Marcin Paweł Sadowski</p>
+            <p>Copyright &copy; 2015-2018 by Marcin Paweł Sadowski</p>
+            <p>Wszelkie prawa do niniejszego dokumentu zastrzeżone. Rozpowszechnianie możliwe <strong>jedynie</strong> ze wskazaniem autora.</p>
+            <p>Aktualnej wersji szukaj na stronie <a href="http://cssdoc.sadowski.edu.pl/">http://cssdoc.sadowski.edu.pl/</a></p>
+        </div>
+        
+        <div id="toc"></div>
+        
+        <h1 class="nonumber">Wstęp</h1>
+        
+        <p>Niniejszy dokument stanowi opis specyfikacji „<span lang="en">CSS Document</span>”, a jednocześnie przykład jej zastosowania. Specyfikacja ta służy do przygotowywana broszur, książek, prac naukowych i innych dokumentów w postaci plików HTML, wyglądem jak najbardziej zgodnych z regułami profesjonalnego składu takich dokumentów w wersji drukowanej<a href="#fn00" class="fnref">*</a>. Poniżej zostały zaprezentowane elementy języka HTML <a href="#htmlspec" class="bibref">[HTMLsp]</a>, do których zdefiniowano odpowiednie style CSS <a href="#cssspec" class="bibref">[CSSspe]</a><a href="#fn07" class="fnref">*</a>, oraz opisane funkcjonalności uzupełniane narzędziami <em>javascript</em>.</p>
+                
+        <p><em>Pamiętaj!</em> Specyfikacja „<span lang="en">CSS Document</span>” jest specyfikacją cały czas otwartą, poprawianą i aktualizowaną. Dlatego też przed użyciem jej w docelowym dokumencie sprawdź aktualność wersji.</p>
+        
+        <div class="footnotes">
+            <p class="footnote" id="fn00">Wygląd sformatowanego dokumentu (tj. zgodność z prawidłami składu tekstów drukowanych) zależy od wykorzystanej przeglądarki internetowej. Przyczynia się do tego fakt, że niektóre przeglądarki – nawet w najnowszych wersjach – mogą nie mieć zaimplementowanej obsługi wszystkich poleceń CSS zastosowanych w specyfikacji „<span lang="en">CSS Document</span>”.</p>
+            <p class="footnote" id="fn07">Elementy języka HTML nie opisane w niniejszej specyfikacji formatowane będą zgodnie z predefiniowanymi stylami wykorzystywanej przeglądarki internetowej.</p>
+        </div>
+        
+        <h1>Przygotowanie dokumentu</h1>
+        
+        <h2>Pliki do pobrania</h2>
+        
+        <p>Aby stosować specyfikację „<span lang="en">CSS Document</span>” w pierwszym kroku należy pobrać ze strony projektu <a href="#cssdoc" class="bibref">[CSSdoc]</a> wskazane poniżej pliki <code>.js</code> oraz <code>.css</code>:</p>
+        
+        <ul>
+            <li><a href="document.css">document.css</a> – główny plik stylów CSS;</li>
+            <li><a href="document.js">document.js</a> – implementuje funkcje automatyzujące tworzenie dokumentu (np. numerację nagłówków, rysunków i tabel) oraz pozwalające stosować odnośniki wewnątrz dokumentu.</li>
+        </ul>
+        
+        <p>Dodatkowo udostępnione zostały następujące pliki mogące służyć za żywy przykład implementacji specyfikacji „<span lang="en">CSS Document</span>”:</p>
+        
+        <ul>
+            <li><a href="index.html">index.html</a> – niniejszy dokument;</li>
+            <li><a href="img.png">img.png</a> – zdjęcie kotka (przykład ilustracji w dokumencie);</li>
+            <li><a href="star.png">star.png</a> – ikona gwiazdki (przykład ilustracji wstawionej w ciąg tekstu);</li>
+        </ul>
+
+        <h2 id="strukturaPliku">Struktura pliku</h2>
+                
+        <p>Przystępując do tworzenia dokumentu zgodnego ze specyfikacją „<span lang="en">CSS Document</span>” należy utworzyć dokument tekstowy z rozszerzeniem <code>.html</code> zawierający poniższy fragment kodu:</p>
+        
+        <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+    &lt;head&gt;
+        &lt;title&gt;… … tytuł dokumentu … …&lt;/title&gt;
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+        &lt;meta name="Author" content="… … imię i nazwisko autora … …" /&gt;
+
+        &lt;link rel="Stylesheet" type="text/css" href="document.css" /&gt;        
+        &lt;script type="text/javascript" src="document.js"&gt;&lt;/script&gt;
+        
+        &lt;script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"&gt;&lt;/script&gt;
+        &lt;script type="text/x-mathjax-config"&gt;
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
+                TeX: { equationNumbers: {autoNumber: "all"} } });
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    …
+    &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+		<p class="noindent">przy czym:</p>
+		
+		<ol>
+	        <li>dokładna wartość odnośnika <code>href</code> do pliku <code>document.css</code> zależy od lokalizacji tego pliku na dysku względem pliku <code>.html</code> z treścią dokumentu;</li>
+        	<li>linia <code>&lt;script type="text/javascript" src="document.js"&gt;&lt;/script&gt;</code> odpowiada za uruchomienie skryptu <em>javascript</em> automatyzującego formatowanie dokumentu:        
+			<ol>
+				<li>numerowanie nagłówków,</li>
+				<li>numerowanie ilustracji,</li>
+				<li>numerowanie tabel,</li>
+				<li>dopisywanie do odnośników odwołujących się do elementów danego dokumentu numerów tych elementów;</li>
+			</ol></li>
+        	<li>dokładna wartość odnośnika <code>src</code> do pliku <code>document.js</code> zależy od lokalizacji tego pliku na dysku względem pliku <code>.html</code> z treścią dokumentu;</li>
+	        <li>dwa ostatnie polecenia <code>&lt;script</code> odpowiedzialne są za obsługę wzorów matematycznych (<a href="#wzorymatematyczne" class="ref">podrozdział</a>).</li>
+		</ol>
+                
+        <h1>Struktura dokumentu</h1>
+        
+        <h2>Strona tytułowa</h2>
+        
+        <p>Stronę tytułową składa się z użyciem następujących bloków <code>div</code>:</p>
+
+        <pre>&lt;div id="title"&gt;tytuł dokumentu&lt;/div&gt;
+&lt;div id="subtitle"&gt;podtytuł&lt;/div&gt;
+&lt;div id="author"&gt;autor&lt;/div&gt;
+&lt;div id="edition"&gt;wersja, miejsce i data wydania etc.&lt;/div&gt;</pre>
+
+		<p>Zawiera ona cztery bloki odpowiedzialne za tytuł i podtytuł dokumentu, wskazanie autora (autorów) dokumentu oraz za informacje o numerze, miejscu i dacie (roku) wydania.</p>
+        
+        <p>Po stronie tytułowej zaleca się umieszczenie dodatkowego bloku <em>imprint</em>:</p>
+        
+        <pre>&lt;div id="imprint"&gt;…&lt;/div&gt;</pre>
+        
+        <p class="noindent">który powoduje utworzenie nowej strony przeznaczonej na stopkę redakcyjną<a href="#fn03" class="fnref">*</a>. Wewnątrz tego bloku mogą zostać umieszczone zarówno akapity jak i listy numerowane lub punktowane, oraz inne elementy.</p>
+                
+        <h2>Rozdziały</h2>
+        
+        <p>Do tytułowania i oddzielania rozdziałów, podrozdziałów i mniejszych partii dokumentu, w ramach „<span lang="en">CSS Document</span>” zdefiniowane zostały nagłówki sześciu poziomów: <code>h1</code>, <code>h2</code>, <code>h3</code>, <code>h4</code>, <code>h5</code> oraz <code>h6</code>. Nagłówki <code>h1</code> składane są na wydruku począwszy od nowej strony, pozostałe natomiast – w sposób ciągły.</p>
+        
+        <h2 class="nonumber notoc">10.5. nagłówek 2</h2>
+        
+        <h3 class="nonumber notoc">10.5.3. nagłówek 3</h3>
+        
+        <h4 class="nonumber notoc">10.5.3.1. nagłówek 4</h4>
+        
+        <h5 class="nonumber notoc">nagłówek 5</h5>
+        
+        <h6 class="nonumber notoc">nagłówek 6</h6>
+        
+        <p>Włączając <em>javascript</em> opisany w <a href="#strukturaPliku" class="ref">podrozdziale</a> nagłówki od <code>h1</code> do <code>h4</code> uzupełniane będą automatycznie numeracją urzędową – jak to widać powyżej tego akapitu.</p>
+        
+        <p>Nagłówki wstępu, przedmowy, zakończenia, dodatków etc. zazwyczaj nie posiadają numeracji. Aby wstrzymać dodawanie numeracji do nagłówka należy użyć klasy <em>nonumber</em>, np. <code>&lt;h1 class="nonumber"&gt;…&lt;/h1&gt;</code>. Należy jednak pamiętać, iż nie wstrzymuje to numerowania podrozdziałów! Z tego powodu stosując klasę <em>nonumber</em> do danego nagłówka nadrzędnego, wymagane jest dopisywanie jej do wszystkich nagłówków niższych rzędów.</p>
+                
+        <h2>Akapity</h2>
+        
+        <p>Treść akapitów obejmuje się, zgodnie ze standardem HTML w znaczniki <code>p</code>. Wszystkie akapity, poza pierwszym, posiadają wcięcie pierwszej linii. W sytuacji, kiedy wcięcie akapitowe nie jest pożądane (np. kontynuując akapit po liście wypunktowanej lub numerowanej), znacznik <code>p</code> należy uzupełnić klasą <em>noindent</em>: <code>&lt;p class=&quot;noindent&quot;&gt;…&lt;/p&gt;</code> (patrz przykład w <a href="#rListy" class="ref">podrozdziale</a> poświęconym listom).</p>
+        
+        <p>Wszystkie akapity, włącznie z pierwszym, są justowane (wyrównane zarówno do lewej, jak i prawej strony). Aby wymusić wyrównanie tylko do lewej lub prawej strony, albo do środka, należy posłużyć się klasami <em>left</em>, <em>right</em> albo <em>center</em>, jak na przykładzie poniżej:</p>
+        
+        <hr />
+        
+        <p class="left">Ten akapit utworzony jest z wykorzystaniem klasy <em>left</em>, tj. <code>&lt;p class="left"&gt;…&lt;p&gt;</code>. Jego zawartość wyrównana jest tylko do lewej krawędzi strony. W ten sposób można nieznacznie wyróżniać zwykłe akapity, ponieważ ich prawe krawędzie poszczególnych wierszy nie tworzą równej linii do prawego marginesu.</p>
+        
+        <hr />
+        
+        <p class="right noindent">Ten akapit utworzony jest z wykorzystaniem klasy <em>right</em>, tj. <code>&lt;p class="right"&gt;…&lt;p&gt;</code>. Jego zawartość wyrównana jest tylko do prawej krawędzi strony. W tej sposób mogą być formatowane np. podziękowania lub adnotacje.</p>
+        
+        <hr />
+        
+        <p class="center noindent">Ten akapit utworzony jest z wykorzystaniem klasy <em>center</em>, tj. <code>&lt;p class="center"&gt;…&lt;p&gt;</code>. Jego zawartość wyrównana jest do środka strony. Tak sformatowany akapit nadaje się do prezentowania np. stopki technicznej dokumentu, typu: „Copyright © 2017 by …” albo „wersja dokumentu z dn. …”.</p>
+        
+        <hr />
+        
+        <p>Użycie klas <em>left</em>, <em>right</em> albo <em>center</em> nie wyłącza wcięcia akapitowego. Aby poprawić wyrównanie akapitów wyśrodkowanych zaleca się użycie dodakowo klasy <em>noindent</em>, tj. <code>&lt;p class="center noindent"&gt;…&lt;p&gt;</code>.</p>
+        
+        <div class="twocolumns">
+            <p>Treść dokumentu domyślnie składana jest w jednej kolumnie. Dla wyróżnienia pewnych fragmentów można złożyć go w dwóch kolumnach równej szerokości. W tym celu należy użyć klasy <em>twocolumns</em> wg. poniższych przykładów. <em>Pamiętaj!</em> Ten styl nie jest interpretowany przez wszystkie przeglądarki. Szczególnie starsze mogą go pomijać i wyświetlać tekst w jednej szpalcie.</p>
+            
+            <p>Najprościej zastosować klasę <em>twocolumns</em> do pojedynczego akapitu poprzez użycie polecenia <code>&lt;p class=&quot;twocolumns&quot;&gt;…&lt;/p&gt;</code>. </p>
+            
+            <p>Jeżeli w obrębie tekstu dwukolumnowego chcemy zawrzeć więcej niż jeden akapit, poszczególne akapity oznaczamy zwyczajnie, tj. jako <code>&lt;p&gt;</code> (bez klasy <em>twocolumns</em>), natomiast wszystkie te akapity obejmujemy w znacznik <code>&lt;div class=&quot;twocolumns&quot;&gt;…&lt;/div&gt;</code>, tj.</p>
+            
+            <pre>
+&lt;div class=&quot;twocolumns&quot;&gt;
+    &lt;p&gt;…&lt;/p&gt;
+    &lt;p&gt;…&lt;/p&gt;
+&lt;/div&gt;</pre>
+            
+            <p>Wszystkie akapity wewnątrz bloku dwukolumnowego <code>&lt;div class=&quot;twocolumns&quot;&gt;</code> posiadają wcięcie pierwszego wiersza.</p>
+            
+            <p>W układzie dwukolumnowym można składać również inne elementy strony, np.:
+            
+            <ul>
+            	<li>listy wypunktowane i numerowane;</li>
+            	<li>tabele;</li>
+            	<li>ilustracje.</li>
+            </ul>
+        </div>
+                
+        <h2 id="rListy">Listy</h2>
+        
+        <p>Specyfikacja „<span lang="en">CSS Document</span>” posiada zdefiniowane style list: wypunktowanej <code>ul</code>, numerowanej <code>ol</code> oraz definicyjnej <code>dl</code>.
+        
+        <h3>Lista wypunktowana</h3>
+        
+        <p>Lista wypunkowana prezentuje się jak poniżej:</p>
+        
+        <pre>&lt;ul&gt;
+	&lt;li&gt;…&lt;/li&gt;
+	&lt;li&gt;…&lt;/li&gt;
+	&lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;</pre>
+        
+        <ul>
+            <li>punkt</li>
+            <li>punkt
+                <ul>
+                    <li>podpunkt
+                        <ul>
+                            <li>pod-podpunkt</li>
+                            <li>pod-podpunkt
+                                <ul>
+                                    <li>pod-pod-podpunkt</li>
+                                    <li>pod-pod-podpunkt</li>
+                                    <li>pod-pod-podpunkt</li>
+                                </ul></li>
+                            <li>pod-podpunkt</li>
+                        </ul></li>
+                    <li>podpunkt</li>
+                    <li>podpunkt</li>
+                    <li>podpunkt</li>
+                </ul></li>
+            <li>punkt</li>
+            <li>punkt</li>
+            <li>punkt</li>
+        </ul>
+        
+        <h3>Lista numerowana</h3>
+        
+        <p class="noindent">Listę numerowaną tworzymy za pomocą poleceń:</p>
+        
+		<pre>&lt;ol&gt;
+	&lt;li&gt;…&lt;/li&gt;
+	&lt;li&gt;…&lt;/li&gt;
+	&lt;li&gt;…&lt;/li&gt;
+&lt;/ol&gt;</pre>
+        
+        <ol>
+            <li>punkt</li>
+            <li>punkt
+                <ol>
+                    <li>podpunkt
+                        <ol>
+                            <li>pod-podpunkt</li>
+                            <li>pod-podpunkt
+                                <ol>
+                                    <li>pod-pod-podpunkt</li>
+                                    <li>pod-pod-podpunkt</li>
+                                    <li>pod-pod-podpunkt</li>
+                                </ol></li>
+                            <li>pod-podpunkt</li>
+                        </ol></li>
+                    <li>podpunkt</li>
+                    <li>podpunkt</li>
+                    <li>podpunkt</li>
+                </ol></li>
+            <li>punkt</li>
+            <li>punkt</li>
+            <li>punkt</li>
+        </ol>
+        
+        <h3>Lista definicyjna</h3>
+        
+        <p>Dodatkowo można tworzyć listy definicyjne:</p>
+        
+        <pre>&lt;dl&gt;
+    &lt;dt&gt;hasło&lt;/dt&gt;
+        &lt;dd&gt;definicja&lt;/dd&gt;
+    &lt;dt&gt;hasło&lt;/dt&gt;
+        &lt;dd&gt;definicja&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+        
+        <dl>
+            <dt>hasło 1</dt>
+            <dd>jakiś bardzo długi i rozbudowany opis hasła 1, który zapewne nie zmieści się w jednej linijce i zostanie przełamany do następnej linijki</dd>
+            <dt>hasło 2</dt>
+            <dd>opis hasła 2</dd>
+        </dl>
+        
+        <h2 id="ilustracje">Ilustracje</h2>
+        
+        <p>Aby umieścić w dokumencie ilustrację z podpisem stosujemy następującą sekwencję poleceń:</p>
+        
+        <pre>&lt;p class="image" id="rysKotek"&gt;
+    &lt;img src="… … …" /&gt;&lt;br /&gt;
+    &lt;span class="title"&gt;opis rysunku&lt;/span&gt;
+&lt;/p&gt;</pre>
+        
+        <p class="image" id="rysKotek"><img src="img.png" /><br /><span class="title">Podpis do rysunku</span></p>
+                
+        <p>Włączając <em>javascript</em> opisany w <a href="#strukturaPliku" class="ref">podrozdziale</a> wszystkie rysunki uzyskują automatycznie numerację urzędową (analogiczną do numeracji nagłówków), z przedrostkiem „Rys.”. Numeracja jest ciągła w obrębie rozdziału (nagłówka <code>h1</code>).</p>
+        
+        <p>Identyfikator <em>id</em> (w przykładzie „rysKotek”) służy do odwołania się wewnątrz dokumentu do danej ilustracji – patrz <a href="#odnosniki" class="ref">podrozdział</a>.</p>
+        
+        <p>Ilustracje można również zamieszczać bezpośrednio w tekście, np. <img src="star.png" /> – wówczas używamy jedynie znacznika <code>&lt;img src="…" /&gt;</code>.</p>
+        
+        <h2>Tabele</h2>
+        
+        <p>Specyfikacja „<span lang="en">CSS Document</span>” zawiera predefiniowane style do formatowania tabel <code>table</code>: wszystkie tabele rozciągane są do pełnej szerokości strony, posiadają naprzemiennie kolorowane wiersze, nagłówek oddzielony jest wyraźniejszą linią, a komórki uzyskują delikatne obramowanie. Nagłówki kolumn <code>th</code> składane są z wyróżnieniem tła, pogrubieniem czcionki oraz wyśrodkowaniem tekstu. Pozostałe komórki <code>td</code> – z zawartością wyrównaną do lewej.</p>
+        
+        <table>
+            <caption>Przykładowa tabela</caption>
+            <thead>
+                <tr>
+                    <th>pierwsza kolumna</th>
+                    <th>druga kolumna</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>zawartość komórki zawartość komórki zawartość komórki zawartość komórki zawartość komórki zawartość komórki zawartość komórki zawartość komórki zawartość komórki zawartość komórki zawartość komórki zawartość komórki</td>
+                    <td>zawartość komórki</td>
+                </tr>
+                <tr>
+                    <td>zawartość komórki</td>
+                    <td>zawartość komórki</td>
+                </tr>
+                <tr>
+                    <td>zawartość komórki</td>
+                    <td>zawartość komórki</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>Aby wymusić wyrównanie tekstu do lewej lub do prawej krawędzi komórki, albo do środka jej szerokości, znacznik <code>td</code> należy uzupełnić o klasę <em>left</em>, <em>right</em> albo <em>center</em>, tj. np. <code>&lt;td class="center"&gt;… … …&lt;/td&gt;</code>.</p>
+        
+        <table id="tblPrzyklad">
+            <caption>Przykład wyrównywania zawartości komórek tabeli</caption>
+            <thead>
+                <tr>
+                    <th class="left">wyrównanie do lewej</th>
+                    <th class="center">wyrównanie do środka</th>
+                    <th class="right">wyrównanie do prawej</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">tekst</td>
+                    <td class="center">inny tekst</td>
+                    <td class="right">1600 €</td>
+                </tr>
+                <tr>
+                    <td class="left">tekst</td>
+                    <td class="center">12 grudnia 2016</td>
+                    <td class="right">12 €</td>
+                </tr>
+                <tr>
+                    <td class="left">tekst</td>
+                    <td class="center">inny tekst</td>
+                    <td class="right">1 €</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>W celu nadania tabeli opisu wystarczy w obrębie znacznika <code>table</code> dodać polecenie <code>&lt;caption&gt;…&lt;/caption&gt;</code>. Dodatkowo włączając <em>javascript</em> opisany w <a href="#strukturaPliku" class="ref">podrozdziale</a> wszystkie tabele uzyskują automatyczną numerację urzędową (analogiczną do numeracji nagłówków), z przedrostkiem „Tabela”. Numeracja ta jest ciągła w obrębie rozdziału (nagłówka <code>h1</code>).</p>
+        
+        <p>Dodatkowy identyfikator <em>id</em> dla znacznika <code>table</code> służy do odwołania się wewnątrz dokumentu do danej tabeli – patrz <a href="#odnosniki" class="ref">podrozdział</a>.</p>
+        
+        <p>Zbiorczo, opisane powyżej możliwości formatowania tabel przedstawia poniższy kod źródłowy:</p>
+        
+        <pre>&lt;table id="tblPrzyklad"&gt;
+    &lt;caption&gt;Przykład wyrównywania zawartości komórek tabeli&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th class="left"&gt;wyrównanie do lewej&lt;/th&gt;
+            &lt;th class="center"&gt;wyrównanie do środka&lt;/th&gt;
+            &lt;th class="right"&gt;wyrównanie do prawej&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;tekst&lt;/td&gt;
+            &lt;td class="center"&gt;inny tekst&lt;/td&gt;
+            &lt;td class="right"&gt;1600 €&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;tekst&lt;/td&gt;
+            &lt;td class="center"&gt;12 grudnia 2016&lt;/td&gt;
+            &lt;td class="right"&gt;12 €&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;tekst&lt;/td&gt;
+            &lt;td class="center"&gt;inny tekst&lt;/td&gt;
+            &lt;td class="right"&gt;1 €&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+        
+        <h2 id="odnosniki">Odnośniki</h2>
+        
+        <h3>Odnośniki do dokumentów zewnętrznych</h3>
+        
+        <p>Odnośniki do dokumentów zewnętrznych (plików, stron WWW, etc.) tworzymy z użyciem standardowego polecenia HTML <code>a</code>.</p>
+        
+        <pre>&lt;a href="www.google.pl"&gt;Google&lt;/a&gt;</pre>
+        
+        <h3>Odnośniki do elementów w danym dokumencie</h3>
+        
+        <p>Odwołania do elementów w danym dokumencie tworzymy zgodnie z regułami języka HTML:</p>
+        
+        <ul>
+        	<li>znacznik elementu, do którego chcemy się odwołać uzupełniamy unikatowym identyfikatorem <em>id</em>,</li>
+        	<li>parametr <code>href</code> odnośnika <code>a</code> uzyskuje ww. unikatowy identyfikator poprzedzony znakiem #.</li>
+        </ul>
+                
+        <p>W specyfikacji „<span lang="en">CSS Document</span>”, dla odnośników wskazujących na elementy w danym dokumencie, stworzona została klasa <em>ref</em>. Dodanie jej do odnośnika <code>a</code> (tj. użycie polecenia <code>&lt;a href="#hNagNumer" class="ref"&gt;rozdziale&lt;/a&gt;</code>) razem z użyciem <em>javascript</em> opisanego w <a href="#strukturaPliku" class="ref">podrozdziale</a>, włącza dodatkową numerację referencyjną. Na przykład otrzymujemy wówczas odnośniki typu: „szczegóły opisane są w <a href="#strukturaPliku" class="ref">podrozdziale</a>”, „jest to przedstawione na <a href="#rysKotek" class="ref">rysunku</a>” albo „wartości współczynników zamieszczono w <a href="#tblPrzyklad" class="ref">tabeli</a>”.</p>
+        
+        <p>Ostatecznie:</p>
+        
+		<pre>&lt;h1 id="hNagNumer"&gt;Rozdział drugi&lt;/h1&gt;
+…
+…
+&lt;a href="#hNagNumer" class="ref"&gt;rozdziale&lt;/a&gt;</pre>
+
+		<p class="noindent">przy czym treść odnośnika (w przykładzie słowo „rozdziale”) nie jest zmieniane podczas dodawania numeracji referencyjnej, tak więc należy ją dostosować do kontekstu zdania podając właściwą nazwę wskazywanego obiektu (rozdział, podrozdział, rysunek, tabela), oraz stosując właściwą jego odmianę (rozdział, rozdziału, rozdziale).</p>
+
+		<div class="footnotes">
+            <p class="footnote" id="fn03">Stopka redakcyjna może zawierać: pełną listę autorów, edytorów, redaktorów, ilustratorów i innych osób pracujących nad dokumentem; źródła ilustracji; informację o użytym oprogramowaniu komputerowym; notę typu „Copyright © 2018 by …”; notkę o zastrzeżeniu praw autorskich itp. <a href="#imprintspec" class="bibref">[StoRed]</a></p>
+        </div>
+
+        <h1>Formatowanie tekstu</h1>
+        
+        <h2 id="formatowaniewtekscie">Formatowania „w tekście”</h2>
+        
+        <p>Do wyróżnienia fragmentu tekstu w dokumencie (jedno słowo lub więcej słów wewnątrz bloku akapitu <code>p</code>) służą polecenia wymienione w <a href="#formtekst" class="ref">tabeli</a>.</p>
+
+		<table id="formtekst">
+			<caption>Polecenia formatowania tekstu</caption>
+			<thead>
+				<tr>
+					<th>polecenie</th>
+					<th>efekt działania</th>
+					<th>przykład zastosowania</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>—</td>
+					<td>zwykły tekst</td>
+					<td>normalny tekst akapitu</td>
+				</tr>
+				<tr>
+					<td><code>&lt;em&gt;…&lt;/em&gt;</code></td>
+					<td><em>kursywa</em></td>
+					<td>delikatne wyróżnienie</td>
+				</tr>
+				<tr>
+					<td><code>&lt;strong&gt;…&lt;/strong&gt;</code></td>
+					<td><strong>pogrubienie</strong></td>
+					<td>silne wyróżnienie</td>
+				</tr>
+				<tr>
+					<td><code>&lt;code&gt;…&lt;/code&gt;</code></td>
+					<td><code>pismo maszynowe</code></td>
+					<td>kod źródłowy, polecenie komputerowe, etc.</td>
+				</tr>
+				<tr>
+					<td><code>&lt;tt&gt;…&lt;/tt&gt;</code></td>
+					<td><tt>pismo maszynowe</tt></td>
+					<td>kod źródłowy, polecenie komputerowe, etc.</td>
+				</tr>
+				<tr>
+					<td><code>&lt;span class="s"&gt;…&lt;/span&gt;</code></td>
+					<td><span class="s">przekreślenie</span></td>
+					<td>wskazanie błędu, etc.</td>
+				</tr>
+				<tr>
+					<td><code>&lt;span class="u"&gt;…&lt;/span&gt;</code></td>
+					<td><span class="u">podkreślenie</span></td>
+					<td>oznaczenie odnośnika internetowego; wyróżnienie hasła indeksu</td>
+				</tr>
+				<tr>
+					<td><code>&lt;span class="w"&gt;…&lt;/span&gt;</code></td>
+					<td><span class="w">rozstrzelenie</span></td>
+					<td>wskazanie na przeczytanie tekstu ze zwiększoną uwagą</td>
+				</tr>
+				<tr>
+					<td><code>&lt;mark&gt;…&lt;/mark&gt;</code></td>
+					<td><mark>zaznaczenie</mark></td>
+					<td>fragment, na który warto zwrócić uwagę<a href="#fn05" class="fnref">*</a></td>
+				</tr>
+				<tr>
+					<td><code>&lt;del&gt;…&lt;/del&gt;</code></td>
+					<td><del>wykreślenie</del></td>
+					<td>fragment wykreślony względem poprzedniej wersji dokumentu<a href="#fn05" class="fnref">*</a></td>
+				</tr>
+				<tr>
+					<td><code>&lt;ins&gt;…&lt;/ins&gt;</code></td>
+					<td><ins>wstawienie</ins></td>
+					<td>fragment dopisany względem poprzedniej wersji dokumentu<a href="#fn05" class="fnref">*</a></td>
+				</tr>
+			</tbody>
+		</table>
+                
+        <h2>Formatowanie bloków tekstu</h2>
+        
+        <h3 id="cytaty">Cytaty</h3>
+        
+        <p>Cytaty oznaczamy znacznikiem <code>blockquote</code> (z pominięciem obejmującego go <code>p</code>). Taki fragment wyróżniony jest większym marginesem z lewej strony oraz zredukowaną interlinią. Ponadto jest odsunięty z góry i z dołu od tekstu właściwego dokumentu.</p>
+        
+        <pre>&lt;blockquote&gt;Taki cytat zawiera jeden, długi akapit, jednakże bez dodatkowego wcięcia pierwszego wiersza. Wewnątrz cytowanego tekstu można stosować wyróżnienienia, np. &lt;em&gt;kursywę&lt;/em&gt; lub &lt;strong>pogrubienie&lt;/strong&gt;. Tekst bloku cytowanego jest justowana, czyli wyrównana do lewej i prawej krawędzi strony.&lt;/blockquote&gt;</pre>
+        
+        <blockquote>Taki cytat zawiera jeden, długi akapit, jednakże bez dodatkowego wcięcia pierwszego wiersza. Wewnątrz cytowanego tekstu można stosować wyróżnienienia, np. <em>kursywę</em> lub <strong>pogrubienie</strong>. Tekst bloku cytowanego jest justowana, czyli wyrównana do lewej i prawej krawędzi strony.</blockquote>
+        
+        <p>W razie potrzeby zacytowania więcej niż jednego akapitu, listy (wypunktowanej lub numerowanej) albo ilustracji, można odpowiednie bloki <code>p</code>, <code>ol</code>, <code>ul</code> albo definiujące ilustrację z podpisem (opisane w <a href="#ilustracje" class="ref">rozdziale</a>) objąć wspólnie blokiem <code>blockquote</code>:</p>
+        
+        <pre>&lt;blockquote&gt;
+    &lt;p&gt;…&lt;/p&gt;
+    &lt;p&gt;…&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;…&lt;/li&gt;
+        &lt;li&gt;…&lt;/li&gt;
+    &lt;/ul&gt;
+    …
+    …
+&lt;/blockquote&gt;</pre>
+        
+        <blockquote>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec accumsan arcu. Aliquam hendrerit posuere congue. Pellentesque vitae luctus lorem, eget laoreet turpis. Suspendisse sodales lacus massa, non ullamcorper tortor rhoncus id. Vestibulum auctor sodales nulla, vitae dapibus ipsum gravida at.</p>
+
+            <p>Nam viverra lorem mauris, id cursus arcu malesuada non. Praesent lobortis quam non magna accumsan suscipit. Maecenas gravida euismod nisl et aliquam. Nam rutrum dictum ornare.</p>
+            
+            <ul>
+                <li>lista</li>
+                <li>lista</li>
+            </ul>
+            
+            <p>Ut luctus lacus non dolor hendrerit molestie. Morbi maximus in urna id convallis. Nulla at orci quis elit maximus vestibulum eu quis felis.</p>
+            
+            <p class="image"><img src="img.png" /><br /><span class="title">Podpis do rysunku</span></p>
+            
+            <p>Vestibulum nisi purus, ullamcorper ac lacus at, cursus mollis neque. Nam congue placerat erat, vitae euismod velit vulputate id. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </blockquote>
+        
+        <p>Możliwe jest również zagnieżdżanie cytowań na kształt popularnych na formach dyskusyjnych i w mediach społecznościowych „komentarzy do komentarzy”. Należy jednak pamiętać, że każde dodatkowe, „wewnętrzne” cytowanie przesuwa lewą krawędź tekstu coraz to bardziej w prawo. Przy zbyt dużej liczbie zagnieżdżeń szerokość kolumny tekstu może stać się zbyt mała do poprawnego wyświetlania treści.</p>
+        
+        <blockquote>
+        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec accumsan arcu. Aliquam hendrerit posuere congue. Pellentesque vitae luctus lorem, eget laoreet turpis. Suspendisse sodales lacus massa, non ullamcorper tortor rhoncus id. Vestibulum auctor sodales nulla, vitae dapibus ipsum gravida at.</p>
+        	<blockquote>
+        		<p>Nam viverra lorem mauris, id cursus arcu malesuada non. Praesent lobortis quam non magna accumsan suscipit. Maecenas gravida euismod nisl et aliquam. Nam rutrum dictum ornare.</p>
+        		<p>Vestibulum nisi purus, ullamcorper ac lacus at, cursus mollis neque. Nam congue placerat erat, vitae euismod velit vulputate id. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        	</blockquote>
+        	<p>Ut luctus lacus non dolor hendrerit molestie. Morbi maximus in urna id convallis. Nulla at orci quis elit maximus vestibulum eu quis felis.</p>
+        </blockquote>
+                
+        <h3 id="kodzrodlowy">Kod źródłowy</h3>
+        
+        <p>Aby umieścić dłuższy (np. wielolinijkowy) kod źródłowy wewnątrz dokumentu obejmujemy go wewnątrz blok <code>&lt;pre&gt; … … … &lt;/pre&gt;</code> zgodnie z zasadami języka HTML <a href="#htmlspec" class="bibref">[HTMLsp]</a><a href="#fn04" class="fnref">*</a>.</p>
+                
+        <pre>
+&lt;pre&gt;… … …
+…
+…
+… … …&lt;/pre&gt;</pre>
+        
+        <p class="noindent">Taki blok składany jest czcionką o stałej szerokości oraz wyróżniony szarym tłem i ramką.</p>
+
+        <p>Krótkie fragmenty kodu można umieszczać wewnątrz akapitów <code>p</code> z użyciem <code>pisma maszynowego</code> – patrz <a href="#formatowaniewtekscie" class="ref">podrozdział</a>.</p>
+        
+		<div class="footnotes">
+	        <p class="footnote" id="fn05">Wyróżnienia <code>mark</code>, <code>del</code> oraz <code>ins</code> dodają lub zmienią tło pod tekstem. Jeżeli podczas drukowania strony w przeglądarce internetowej zostanie wyłączone drukowania teł, polecenia te stracą (całkowicie lub częściowo) swoje właściwości.</p>
+			<p class="footnote" id="fn04">W szczególności należy pamiętać o zamianie wybranych znaków na odpowiednie encje <a href="#htmlentities" class="bibref">[HTMLen]</a>. Przede wszystkim dotyczy to symboli „&lt;” na <code>&amp;lt;</code>, „&gt;” na <code>&amp;gt;</code>. Jeśli użyjesz znaku mniejszości „&lt;” lub większości „&gt;”, przeglądarka może pomieszać je z tagami języka HTML, a przez to niewłaściwie wyświetlić dokument.</p>
+		</div>
+        
+        <h1>Dodatki</h1>
+        
+        <h2>Przypisy</h2>
+        
+        <h3 id="przypisnamarginesie">Przypisy boczne („na marginesie”)</h3>
+        
+        <p>Wewnątrz tekstu ciągłego, akapitu, można wstawić przypis, który będzie wyświetlany mniejszą czcionką, w ramce, przy prawym <span class="w">marginesie strony</span><span class="rightnote">To jest treść przypisu bocznego. Przypis taki ma ustaloną szerokość i może zawierać jedynie tekst ciągły – pojedynczy akapit.</span>. Przypis taki wstawiamy obejmując treść przypisu w znaczniki <code>&lt;span class=&quot;rightnote&quot;&gt;…&lt;/span&gt;</code> (fragment ten powinien znajdować się w obrębie akapitu <code>p</code>). Dodatkowo można w treści akapitu wyróżnić słowo (lub większy fragment), którego przypis dotyczy, obejmując to słowo (ten fragment) w znaczniki <code>&lt;span class=&quot;w&quot;&gt;…&lt;/span&gt;</code>. Wyróżnione słowo (fragment) uzyska wówczas rozstrzelenie.</p>
+        
+        <pre>
+&lt;p&gt;… … … &lt;span class=&quot;w&quot;&gt;słowo, do którego odnosi się przypis&lt;/span&gt;&lt;span class=&quot;rightnote&quot;&gt;treść przypisu&lt;/span&gt; … … …&lt;/p&gt;</pre>
+        
+        <p>Wyróżnianie słowa, do którego odnosi się przypis można pominąć. Można też zastosować inne wyróżnienie (np. pogrubienie zamiast rozstrzelenia).</p>
+        
+        <h3>Przypisy dolne (na końcu rozdziału)</h3>
+        
+        <p>Przypis dolny składa się z dwóch elementów: samego przypisu oraz odnośnika w tekście. Przypisy dolne tworzy się jako akapity <code>p</code> klasy <em>footnote</em> objęte blokiem <code>div</code> klasy <em>footnotes</em>, umieszczone na końcu rozdziału, tj. tuż przed znacznikiem <code>h1</code> rozpoczynającym następny rozdział:</p>
+        
+        <pre>&lt;div class="footnotes"&gt;
+    &lt;p class="footnote" id="przypis1"&gt;To jest treść przypisu dolnego.&lt;/p&gt;
+        
+    &lt;p class="footnote" id="przypis2"&gt;To jest jakiś inny przypis dolny.&lt;/p&gt;
+&lt;/div&gt;</pre>
+        
+		<p class="noindent">przy czym identyfikatory <code>id</code> muszą być unikatowe względem wszystkich innych identyfikatorów w obrębie całego dokumentu.</p>
+		
+		<p>W tekście, w miejscu w którym ma nastąpić odwołanie do przypisu dolnego umieszcza się polecenie:</p>
+		
+		<pre>&lt;a href="#przypis1" class="fnref"&gt;*&lt;/a&gt;</pre>
+		
+		<p class="noindent">gdzie adres odnośnika <code>a</code> musi wskazywać na identyfikator odpowiedniego przypisu dolnego (poprzedzony znakiem <code>#</code>).</p>
+		
+		<p>Włączając <em>javascript</em> opisany w <a href="#strukturaPliku" class="ref">podrozdziale</a> przypisy dolne uzyskują numerację (oddzielną dla każdego rozdziału <code>h1</code>), a w miejscach wskazanych linkiem z klasą <em>fnref</em> wstawiany jest właściwy numer przypisu, np. „…jakiś tekst z przypisem dolnym<a href="#fn01" class="fnref">*</a> a tutaj, nieco dalej kolejny przypis dolny<a href="#fn02" class="fnref">*</a>”.</p>
+                
+<!--         <p>Specyfikacja „<span lang="en">CSS Document</span>” obsługuje do 20 przypisów w jednym rozdziale. Oznaczane są one odpowiednio: &lowast;, &dagger;, &Dagger;, &para;, &lowast;&lowast;, &dagger;&dagger;, &Dagger;&Dagger;, &para;&para;, aż do pięciu znaków &para;&para;&para;&para;&para;.</p> -->
+        
+        <h2 id="literatura">Literatura, bibliografia</h2>
+        
+        <p>Tworzenie bibliografii rozpoczyna się od utworzenia rozdziału (zazwyczaj nienumerowanego, tj. z klasą <em>nonumber</em>) w skład którego będą wchodziły poszczególne pozycje bibliograficzne. Pojedyncza pozycja bibliograficzna jest akapitem <code>p</code> z klasą <em>bib</em> i unikatowym identyfikatorem:</p>
+        
+        <pre>&lt;h1 class="nonumber"&gt;Bibliografia&lt;/h1&gt;
+        
+&lt;p class="bib" id="bibliografia1"&gt;&lt;span class="bibname"&gt;[nazwa1]&lt;/span&gt; &lt;em&gt;Tytuł książki&lt;/em&gt;, autorzy, wydanie&lt;/p&gt;
+
+&lt;p class="bib" id="bibliografia2"&gt;&lt;span class="bibname"&gt;[nazwa2]&lt;/span&gt; &lt;em&gt;Tytuł strony WWW&lt;/em&gt; &lt;a href="…"&gt;http://…&lt;/a&gt;&lt;/p&gt;</pre>
+
+		<p class="noindent">przy czym identyfikatory <code>id</code> muszą być unikatowe względem wszystkich innych identyfikatorów w obrębie całego dokumentu.</p>
+		
+		<p>Następnie, w tekście, w miejscu w którym wymagane jest odwołanie do pozycji bibliograficznej stosuje się polecenie</p>
+		
+		<pre>&lt;a href="#bibliografia1" class="bibref"&gt;[nazwa1]&lt;/a&gt;</pre>
+		
+		<p class="noindent">gdzie adres odnośnika <code>a</code> musi wskazywać na identyfikator <code>id</code> odpowiedniej pozycji bibliograficznej (poprzedzony znakiem <code>#</code>). Nazwy w nawiasach kwadratowych, np. <code>[nazwa1]</code>, służą odnalezieniu pozycji bibliograficznej i mogą być tworzone w dowolnym formacie.</p>
+		
+		<p>Włączając <em>javascript</em> opisany w <a href="#strukturaPliku" class="ref">podrozdziale</a> pozycje bibliograficzne uzyskują numerację w postaci <em>[…]</em> zamiast nazw w nawiasach kwadratowych, a w miejscach wskazanych linkiem z klasą <em>bibref</em> wstawiany jest ten numer (również w formacie <em>[…]</em> zamiast nazwy w nawiasach kwadratowych), np. „…najnowszą wersję specyfikacji «CSS Document» znajdziesz na stronie <a href="#cssdoc" class="bibref">[CSSdoc]</a>”.</p>
+		
+		<p>W związku z powyższym pozycje bibliografii powinny być posortowane:</p>
+		
+		<ul>
+			<li>wedle uznania przy włączonym <em>javascript</em> (może to być układ alfabetyczny względem tytułów – zalecany, zgodnie z pojawianiem się odnośników w tekście – niezalecany, albo inny) — wówczas odnajdywanie pozycji w bibliografii następuje po nazwach <em>[nazwa1]</em>;</li>
+			<li>alfabetycznie wg. nazw w nawiasach kwadratowych przy wyłączonym <em>javascript.</em> — wówczas odnajdywanie pozycji w bibliografii następuje po automatycznie nadanej numeracji, np. <em>[1]</em>.</li>
+		</ul>
+        
+		<h2 id="spistresci">Spis treści</h2>
+		
+		<p>Tworzenie spisu treści ograniczone zostało do minumum: W miejscu, w którym ma zostać wstawiony wpis treści należy umieścić polecenie:</p>
+		
+		<pre>&lt;div id="toc"&gt;&lt;/div&gt;</pre>
+        
+        <p class="noindent">a następnie włączyć <em>javascript</em>.</p>
+        
+        <p>Spowoduje to zaprezentowanie w formie dwukolumnowej wszystkich nagłówków od poziomu 1. (<code>h1</code>) do poziomu 4. (<code>h4</code>) włączenie. Każda pozycja spisu treści będzie linkiem pozwalającym szybko przejść do właściwego fragmentu dokumentu<a href="#fn06" class="fnref">*</a><a href="#fn08" class="fnref">*</a>.</p>
+        
+        <p>W razie potrzeby można wyłączyć dodawanie wybranych nagłówków do spisu treści. Służy do tego klasa <em>notoc</em> dodawana do tego nagłówka:</p>
+        
+        <pre>&lt;h1 class="notoc"&gt;nagłówek, który nie zostanie dodany do spisu treści&lt;/h1&gt;</pre>
+        
+        <h2 id="wzorymatematyczne">Wzory matematyczne</h2>
+        
+        <p>W celu poprawnego wyświetlania w dokumencie wzorów należy zastosować bibliotekę <em>MathJax</em> <a href="#bibmathjax" class="bibref">[MathJa]</a> zgodnie z tym, co zostało zaprezentowane w <a href="#strukturaPliku" class="ref">podrozdziale</a>.</p>
+
+        <p>Wzory <em>liniowe</em>, tj. zawarte w ciągu tekstu akapitu zamieszczamy w notacji TeX obejmując je w <code>$… … …$</code> albo <code>\(… … …\)</code>. Dla przykładu, aby uzyskać wzór $y = ax^2 + bx + c$ należy użyć polecenia</p>
+        
+        <pre>$y = ax^2 + bx + c$</pre>
+                        
+        <p>Wzory <em>blokowe</em> tworzymy w oddzielnych akapitach <code>p</code> obejmując same wzory w <code>$$… … …$$</code></p>
+        
+        <pre>&lt;p&gt;$$f(a) = \frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-a} dz\label{eq1}$$&lt;/p&gt;</pre>
+        
+        <p class="noindent">co da następujący wzór</p>
+
+        <p>$$f(a) = \frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-a} dz\label{eq1}$$</p>
+        
+        <p class="noindent">albo obejmując w <code>\[… … …\]</code></p>
+        
+        <pre>&lt;p&gt;\[\sigma = \sqrt{\frac{1}{N}\sum_{i=1}^N (x_i - \mu)^2}\label{eq2}\]&lt;/p&gt;</pre>
+        
+        <p class="noindent">co da taki wzór</p>
+        
+        <p>\[\sigma = \sqrt{\frac{1}{N}\sum_{i=1}^N (x_i - \mu)^2}\label{eq2}\]</p>
+        
+        <p>W powyższych przykładach wzory zostały uzupełnione o etykiety <code>\label{…}</code>. Dzięki nim można odwoływać się w tekście do numerów tych wzorów. Odwołanie takie powstaje poprzez umieszczenie w treści akapitu polecenia <code>\eqref{…}</code> z nazwą wpisaną w stosowną etykietę, np. stosując polecenia</p>
+        
+        <pre>…podstawiając równanie \eqref{eq1} do \eqref{eq2} dowodzimy, że…</pre>
+
+        <p class="noindent">uzyskamy taki fragment „…podstawiając równanie \eqref{eq1} do \eqref{eq2} dowidzimy, że…”</p>
+        
+        <h2 id="liniapozioma">Linia pozioma</h2>
+        
+        <p>W celu oddzielenia fragmentów tekstu (lub wyróżnienia takiego tekstu) można wstawić linię poziomą. Do tego służy znacznik <code>&lt;hr /&gt;</code>.</p>
+        
+        <hr />
+                
+        <p>Przygotowana została również bardziej ozdobna wersja linii poziomej. Uzyskuje się ją poleceniem <code>&lt;hr class="graph" /&gt;</code>. Jednak bazuje ona na modyfikacji tła elementu strony (dokumentu), więc nie zostanie wydrukowana jeżeli wyłączone jest drukowanie teł.</p>
+        
+        <hr class="graph" />
+        
+        <p>Oba, powyższe polecenia tworzenia linii poziomej nie posiadają dodatkowych opcji.</p>
+
+        
+        <div class="footnotes">
+            <p class="footnote" id="fn01">To jest treść przypisu dolnego, umieszczonego na końcu rozdziału lub podrozdziału niższego poziomu. Przypis taki składany jest mniejszą czionką niż tekst zwykłego akapitu. Przypis dolny może być obecnie tylko jednym akapitem <code>p</code> ewentualnie z podziałem linii poleceniem <code>&lt;br /&gt;</code><br />…tak jak w tym miejscu.</p>
+        
+            <p class="footnote" id="fn02">To jest jakiś inny przypis dolny.</p>
+            
+            <p class="footnote" id="fn06">Dodatkowo, nagłówki od <code>h1</code> do <code>h4</code> uzyskują funkcjonalność w postaci strzałki do góry „↑”, która jest linkiem powrotnym do spisu treści. Strzałka ta pojawia się przy prawym marginesie, na wysokości nagłówka, po wskazaniu go kursorem myszki. Strzałka ta nie jest uwidaczniana na wydruku.</p>
+            
+			<p class="footnote" id="fn08">Dodatkowo, nagłówki od <code>h1</code> do <code>h4</code> uzyskują funkcjonalność w postaci znaku „#”, który jest linkiem do tego nagłówka i pozwala na zapisanie zakładki do tego nagłówka. Znak ten pojawia po wskazaniu nagłówka kursorem myszki i nie jest uwidaczniany na wydruku.</p>
+        </div>
+                                
+        <h1 class="nonumber">Bibliografia</h1>
+        
+        <p class="bib" id="cssdoc"><span class="bibname">[CSSdoc]</span> <em>CSS Document</em> (on-line, dostęp 24.2.2018) <a href="http://cssdoc.sadowski.edu.pl/">http://cssdoc.sadowski.edu.pl/</a></p>
+        
+        <p class="bib" id="cssspec"><span class="bibname">[CSSspe]</span> <em>CSS Specification</em> (on-line, dostęp 2.3.2018) <a href="https://www.w3.org/Style/CSS/specs.en.html">https://www.w3.org/Style/CSS/specs.en.html</a></p>
+        
+        <p class="bib" id="htmlspec"><span class="bibname">[HTMLsp]</span> <em>HTML 4.01 Specification</em> (on-line, dostęp 2.3.2018) <a href="https://www.w3.org/TR/html401/">https://www.w3.org/TR/html401/</a></p>
+
+        <p  class="bib" id="htmlentities"><span class="bibname">[HTMLen]</span> <em>HTML Entities</em> (on-line, dostęp 5.3.2018) <a href="https://www.w3schools.com/html/html_entities.asp">https://www.w3schools.com/html/html_entities.asp</a></p>
+        
+        <p class="bib" id="bibmathjax"><span class="bibname">[MathJa]</span> <em>MathJax</em> (on-line, dostęp 24.2.2018) <a href="https://www.mathjax.org">https://www.mathjax.org</a></p>
+        
+        <p class="bib" id="imprintspec"><span class="bibname">[StoRed]</span> <em>Stopka redakcyjna</em>, hasło w serwisie <em>Wikipedia</em> (on-line, dostęp 24.2.2018) <a href="https://pl.wikipedia.org/wiki/Stopka_redakcyjna">https://pl.wikipedia.org/wiki/Stopka_redakcyjna</a></p>
+        
+		<h1 class="nonumber">Lista zmian</h1>
+        
+        <ul>
+        	<li><strong>wersja <abbr title="ang. Release Candidate, czyli kandydat do wydania">RC</abbr></strong> (z dn. 1.3.2018)
+        		<ul>
+        			<li>pierwsza, przedoficjalna wersja specyfikacji.</li>
+        		</ul></li>
+        	<li><strong>wersja 1.0</strong> (z dn. 9.3.2018)
+        		<ul>
+        			<li>dodano automatyczne tworzenie spisu treści (<a href="#spistresci" class="ref">podrozdział</a>) oraz linków „↑” przy nagłówkach pozwalających powrócić do spisu treści;</li>
+        			<li>dodano formatowanie tekstu <span class="w">rozstrzelonego</span> i <span class="s">przekreślonego</span> (<a href="#formatowaniewtekscie" class="ref">podrozdział</a>);</li>
+        			<li>zmieniono proponowany, domyślny sposób wyróżniania zwrotu, którego dotyczy przypis na marginesie (rozstrzelenie zamiast podkreślenia, <a href="#przypisnamarginesie" class="ref">podrozdział</a>);</li>
+        			<li>zmieniono metodę tworzenia bibliografii (<a href="#literatura" class="ref">podrozdział</a>);</li>
+        			<li>poprawiono wyrównywanie tekstu w niektórych blokach tekstu (np. usunięto justowanie w bibliografii);</li>
+        			<li>poprawiono formatowanie kodów źródłowych <code>pre</code> (<a href="#kodzrodlowy" class="ref">podrozdział</a>).</li>
+        		</ul></li>
+        	<li><strong>wersja 1.1</strong> (z dn. 20.3.2018)
+        		<ul>
+        			<li>dodano graficzną (ozdobną) wersję linii poziomej (<a href="#liniapozioma" class="ref">podrozdział</a>);</li>
+        			<li>poprawiono wyświetlanie pozycji literatury/bibliografii;</li>
+        			<li>poprawiono wyświetlanie przypisów dolnych (na końcu rozdziału);</li>
+        			<li>usunięto dwukolumnowe drukowanie spisu treści.</li>
+        		</ul></li>
+        	<li><strong>wersja 1.2</strong> (z dn. 12.4.2018)
+        		<ul>
+        			<li>dodano automatyczne tworzenie linków „#” przy nagłówkach pozwalających zapisać „zakładkę” do tego nagłówka (<a href="#spistresci" class="ref">podrozdział</a>);</li>
+        			<li>poprawiono formatowanie cytatów (<a href="#cytaty" class="ref">podrozdział</a>).</li>
+        		</ul></li>
+        </ul>
+    </body>
+</html>
