@@ -307,4 +307,61 @@ Możliwe jest również zagnieżdżanie cytowań na kształt popularnych na form
 
 #### Kod źródłowy
 
-…
+Aby umieścić dłuższy (np. wielolinijkowy) kod źródłowy wewnątrz dokumentu obejmujemy go wewnątrz blok `<pre> … … … </pre>` zgodnie z zasadami języka HTML. W szczególności należy pamiętać o zamianie wybranych znaków na odpowiednie encje. Przede wszystkim dotyczy to symboli „<” na `&lt;`, „>” na `&gt;`. Jeśli użyjesz znaku mniejszości „<” lub większości „>”, przeglądarka może pomieszać je z tagami języka HTML, a przez to niewłaściwie wyświetlić dokument.
+
+Taki blok składany jest czcionką o stałej szerokości oraz wyróżniony szarym tłem i ramką.
+Krótkie fragmenty kodu można umieszczać wewnątrz akapitów `p` z użyciem pisma maszynowego – patrz podrozdział …….
+
+## Dodatki
+
+### Przypisy
+
+#### Przypisy boczne („na marginesie”)
+
+Wewnątrz tekstu ciągłego, akapitu, można wstawić przypis, który będzie wyświetlany mniejszą czcionką, w ramce, przy prawym marginesie strony. Przypis taki wstawiamy obejmując treść przypisu w znaczniki `<span class="rightnote">…</span>` (fragment ten powinien znajdować się w obrębie akapitu `p`). Dodatkowo można w treści akapitu wyróżnić słowo (lub większy fragment), którego przypis dotyczy, obejmując to słowo (ten fragment) w znaczniki `<span class="w">…</span>`. Wyróżnione słowo (fragment) uzyska wówczas rozstrzelenie.
+
+```html
+<p>… … … <span class="w">słowo, do którego odnosi się przypis</span><span class="rightnote">treść przypisu</span> … … …</p>
+```
+
+Wyróżnianie słowa, do którego odnosi się przypis można pominąć. Można też zastosować inne wyróżnienie (np. pogrubienie zamiast rozstrzelenia).
+
+#### Przypisy dolne (na końcu rozdziału)
+
+Przypis dolny składa się z dwóch elementów: samego przypisu oraz odnośnika w tekście. Przypisy dolne tworzy się jako akapity `p` klasy _footnote_ objęte blokiem `div` klasy _footnotes_, umieszczone na końcu rozdziału, tj. tuż przed znacznikiem h1 rozpoczynającym następny rozdział:
+
+```html
+<div class="footnotes">
+    <p class="footnote" id="przypis1">To jest treść przypisu dolnego.</p>
+        
+    <p class="footnote" id="przypis2">To jest jakiś inny przypis dolny.</p>
+</div>
+```
+
+przy czym identyfikatory `id` muszą być unikatowe względem wszystkich innych identyfikatorów w obrębie całego dokumentu.
+
+W tekście, w miejscu w którym ma nastąpić odwołanie do przypisu dolnego umieszcza się polecenie: `<a href="#przypis1" class="fnref">*</a>` gdzie adres odnośnika `a` musi wskazywać na identyfikator odpowiedniego przypisu dolnego (poprzedzony znakiem `#`).
+
+Włączając _javascript_ opisany w podrozdziale …… przypisy dolne uzyskują numerację (oddzielną dla każdego rozdziału `h1`), a w miejscach wskazanych linkiem z klasą _fnref_ wstawiany jest właściwy numer przypisu.
+
+### Literatura, bibliografia
+
+## Lista zmian
+
+* wersja RC (z dn. 1.3.2018)
+	* pierwsza, przedoficjalna wersja specyfikacji.
+* wersja 1.0 (z dn. 9.3.2018)
+	* dodano automatyczne tworzenie spisu treści (podrozdział ……) oraz linków „↑” przy nagłówkach pozwalających powrócić do spisu treści;
+	* dodano formatowanie tekstu rozstrzelonego i przekreślonego (podrozdział ……);
+	* zmieniono proponowany, domyślny sposób wyróżniania zwrotu, którego dotyczy przypis na marginesie (rozstrzelenie zamiast podkreślenia, podrozdział ……);
+	* zmieniono metodę tworzenia bibliografii (podrozdział ……);
+	* poprawiono wyrównywanie tekstu w niektórych blokach tekstu (np. usunięto justowanie w bibliografii);
+	* poprawiono formatowanie kodów źródłowych pre (podrozdział ……).
+* wersja 1.1 (z dn. 20.3.2018)
+	* dodano graficzną (ozdobną) wersję linii poziomej (podrozdział ……);
+	* poprawiono wyświetlanie pozycji literatury/bibliografii;
+	* poprawiono wyświetlanie przypisów dolnych (na końcu rozdziału);
+	* usunięto dwukolumnowe drukowanie spisu treści.
+* wersja 1.2 (z dn. 12.4.2018)
+	* dodano automatyczne tworzenie linków „#” przy nagłówkach pozwalających zapisać „zakładkę” do tego nagłówka (podrozdział ……);
+	* poprawiono formatowanie cytatów (podrozdział ……).
