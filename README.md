@@ -62,4 +62,34 @@ przy czym:
 	* numerowanie tabel,
 	* dopisywanie do odnośników odwołujących się do elementów danego dokumentu numerów tych elementów;
 3. dokładna wartość odnośnika `src` do pliku _document.js_ zależy od lokalizacji tego pliku na dysku względem pliku _.html_ z treścią dokumentu;
-4. dwa ostatnie polecenia `<script` odpowiedzialne są za obsługę wzorów matematycznych.
+4. dwa ostatnie polecenia `<script` odpowiedzialne są za obsługę wzorów matematycznych (podrozdział ……).
+
+## Struktura dokumentu
+
+### Strona tytułowa
+
+Stronę tytułową składa się z użyciem następujących bloków `div`:
+
+```html
+<div id="title">tytuł dokumentu</div>
+<div id="subtitle">podtytuł</div>
+<div id="author">autor</div>
+<div id="edition">wersja, miejsce i data wydania etc.</div>
+```
+
+Zawiera ona cztery bloki odpowiedzialne za tytuł i podtytuł dokumentu, wskazanie autora (autorów) dokumentu oraz za informacje o numerze, miejscu i dacie (roku) wydania.
+Po stronie tytułowej zaleca się umieszczenie dodatkowego bloku _imprint_:
+
+```html
+<div id="imprint">…</div>
+```
+
+który powoduje utworzenie nowej strony przeznaczonej na stopkę redakcyjną. Wewnątrz tego bloku mogą zostać umieszczone zarówno akapity jak i listy numerowane lub punktowane, oraz inne elementy.
+
+### Rozdziały
+
+Do tytułowania i oddzielania rozdziałów, podrozdziałów i mniejszych partii dokumentu, w ramach „CSS Document” zdefiniowane zostały nagłówki sześciu poziomów: `h1`, `h2`, `h3`, `h4`, `h5` oraz `h6`. Nagłówki h1 składane są na wydruku począwszy od nowej strony, pozostałe natomiast – w sposób ciągły.
+
+Włączając _javascript_ opisany w podrozdziale …… nagłówki od `h1` do `h4` uzupełniane będą automatycznie numeracją urzędową – jak to widać powyżej tego akapitu.
+
+Nagłówki wstępu, przedmowy, zakończenia, dodatków etc. zazwyczaj nie posiadają numeracji. Aby wstrzymać dodawanie numeracji do nagłówka należy użyć klasy _nonumber_, np. `<h1 class="nonumber">…</h1>`. Należy jednak pamiętać, iż nie wstrzymuje to numerowania podrozdziałów! Z tego powodu stosując klasę nonumber do danego nagłówka nadrzędnego, wymagane jest dopisywanie jej do wszystkich nagłówków niższych rzędów.
