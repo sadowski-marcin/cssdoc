@@ -1,0 +1,2 @@
+# cssdoc
+Specyfikacja CSS Document
