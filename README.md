@@ -187,3 +187,124 @@ Włączając _javascript_ opisany w podrozdziale …… wszystkie rysunki uzysku
 Identyfikator `id` (w przykładzie „rysKotek”) służy do odwołania się wewnątrz dokumentu do danej ilustracji – patrz podrozdział …….
 
 Ilustracje można również zamieszczać bezpośrednio w tekście, wówczas używamy jedynie znacznika `<img src="…" />`.
+
+### Tabele
+
+Specyfikacja „CSS Document” zawiera predefiniowane style do formatowania tabel `table`: wszystkie tabele rozciągane są do pełnej szerokości strony, posiadają naprzemiennie kolorowane wiersze, nagłówek oddzielony jest wyraźniejszą linią, a komórki uzyskują delikatne obramowanie. Nagłówki kolumn `th` składane są z wyróżnieniem tła, pogrubieniem czcionki oraz wyśrodkowaniem tekstu. Pozostałe komórki `td` – z zawartością wyrównaną do lewej.
+
+Aby wymusić wyrównanie tekstu do lewej lub do prawej krawędzi komórki, albo do środka jej szerokości, znacznik `td` należy uzupełnić o klasę _left_, _right_ albo _center_, tj. np. `<td class="center">… … …</td>`.
+
+W celu nadania tabeli opisu wystarczy w obrębie znacznika `table` dodać polecenie `<caption>…</caption>`. Dodatkowo włączając _javascript_ opisany w podrozdziale …… wszystkie tabele uzyskują automatyczną numerację urzędową (analogiczną do numeracji nagłówków), z przedrostkiem „Tabela”. Numeracja ta jest ciągła w obrębie rozdziału (nagłówka `h1`).
+
+Dodatkowy identyfikator _id_ dla znacznika `table` służy do odwołania się wewnątrz dokumentu do danej tabeli – patrz podrozdział …….
+
+Zbiorczo, opisane powyżej możliwości formatowania tabel przedstawia poniższy kod źródłowy:
+
+```html
+<table id="tblPrzyklad">
+    <caption>Przykład wyrównywania zawartości komórek tabeli</caption>
+    <thead>
+        <tr>
+            <th class="left">wyrównanie do lewej</th>
+            <th class="center">wyrównanie do środka</th>
+            <th class="right">wyrównanie do prawej</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="left">tekst</td>
+            <td class="center">inny tekst</td>
+            <td class="right">1600 €</td>
+        </tr>
+        <tr>
+            <td class="left">tekst</td>
+            <td class="center">12 grudnia 2016</td>
+            <td class="right">12 €</td>
+        </tr>
+        <tr>
+            <td class="left">tekst</td>
+            <td class="center">inny tekst</td>
+            <td class="right">1 €</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+### Odnośniki
+
+#### Odnośniki do dokumentów zewnętrznych
+
+Odnośniki do dokumentów zewnętrznych (plików, stron WWW, etc.) tworzymy z użyciem standardowego polecenia HTML `a`: `<a href="www.google.pl">Google</a>`
+
+#### Odnośniki do elementów w danym dokumencie
+
+Odwołania do elementów w danym dokumencie tworzymy zgodnie z regułami języka HTML:
+
+* znacznik elementu, do którego chcemy się odwołać uzupełniamy unikatowym identyfikatorem _id_,
+* parametr `href` odnośnika `a` uzyskuje ww. unikatowy identyfikator poprzedzony znakiem #.
+
+W specyfikacji „CSS Document”, dla odnośników wskazujących na elementy w danym dokumencie, stworzona została klasa _ref_. Dodanie jej do odnośnika `a` (tj. użycie polecenia `<a href="#hNagNumer" class="ref">rozdziale</a>`) razem z użyciem _javascript_ opisanego w podrozdziale ……, włącza dodatkową numerację referencyjną. Na przykład otrzymujemy wówczas odnośniki typu: „szczegóły opisane są w podrozdziale 1.2”, „jest to przedstawione na rysunku 2.1” albo „wartości współczynników zamieszczono w tabeli 2.2”.
+
+Ostatecznie:
+
+```html
+<h1 id="hNagNumer">Rozdział drugi</h1>
+…
+…
+<a href="#hNagNumer" class="ref">rozdziale</a>
+```
+
+przy czym treść odnośnika (w przykładzie słowo „rozdziale”) nie jest zmieniane podczas dodawania numeracji referencyjnej, tak więc należy ją dostosować do kontekstu zdania podając właściwą nazwę wskazywanego obiektu (rozdział, podrozdział, rysunek, tabela), oraz stosując właściwą jego odmianę (rozdział, rozdziału, rozdziale).
+
+## Formatowanie tekstu
+
+### Formatowania „w tekście”
+
+Do wyróżnienia fragmentu tekstu w dokumencie (jedno słowo lub więcej słów wewnątrz bloku akapitu `p`) służą polecenia wymienione w poniższej tabeli:
+
+polecenie | efekt działania | przykład zastosowania
+---|---|---
+— | zwykły tekst | normalny tekst akapitu
+`<em>…</em>` | kursywa | delikatne wyróżnienie
+`<strong>…</strong>` | pogrubienie | silne wyróżnienie
+`<code>…</code>` | pismo maszynowe | kod źródłowy, polecenie komputerowe, etc.
+`<tt>…</tt>` | pismo maszynowe | kod źródłowy, polecenie komputerowe, etc.
+`<span class="s">…</span>` | przekreślenie | wskazanie błędu, etc.
+`<span class="u">…</span>` | podkreślenie | oznaczenie odnośnika internetowego; wyróżnienie hasła indeksu
+`<span class="w">…</span>` | rozstrzelenie | wskazanie na przeczytanie tekstu ze zwiększoną uwagą
+`<mark>…</mark>` | zmiana tła na żółtą | fragment, na który warto zwrócić uwagę<sup>*</sup>
+`<del>…</del>` | przekreślenie i zmiana tła na czerwoną | fragment wykreślony względem poprzedniej wersji dokumentu<sup>*</sup>
+`<ins>…</ins>` | podkreślenie i zmiana tła na zieloną | fragment dopisany względem poprzedniej wersji dokumentu<sup>*</sup>
+
+<sup>*</sup> Wyróżnienia `mark`, `del` oraz `ins` dodają lub zmienią tło pod tekstem. Jeżeli podczas drukowania strony w przeglądarce internetowej zostanie wyłączone drukowania teł, polecenia te stracą (całkowicie lub częściowo) swoje właściwości.
+
+### Formatowanie bloków tekstu
+
+#### Cytaty
+
+Cytaty oznaczamy znacznikiem `blockquote` (z pominięciem obejmującego go `p`). Taki fragment wyróżniony jest większym marginesem z lewej strony oraz zredukowaną interlinią. Ponadto jest odsunięty z góry i z dołu od tekstu właściwego dokumentu.
+
+```html
+<blockquote>Taki cytat zawiera jeden, długi akapit, jednakże bez dodatkowego wcięcia pierwszego wiersza. Wewnątrz cytowanego tekstu można stosować wyróżnienienia, np. <em>kursywę</em> lub <strong>pogrubienie</strong>. Tekst bloku cytowanego jest justowana, czyli wyrównana do lewej i prawej krawędzi strony.</blockquote>
+```
+
+W razie potrzeby zacytowania więcej niż jednego akapitu, listy (wypunktowanej lub numerowanej) albo ilustracji, można odpowiednie bloki `p`, `ol`, `ul` albo definiujące ilustrację z podpisem (opisane w rozdziale ……) objąć wspólnie blokiem blockquote:
+
+```html
+<blockquote>
+    <p>…</p>
+    <p>…</p>
+    <ul>
+        <li>…</li>
+        <li>…</li>
+    </ul>
+    …
+    …
+</blockquote>
+```
+
+Możliwe jest również zagnieżdżanie cytowań na kształt popularnych na formach dyskusyjnych i w mediach społecznościowych „komentarzy do komentarzy”. Należy jednak pamiętać, że każde dodatkowe, „wewnętrzne” cytowanie przesuwa lewą krawędź tekstu coraz to bardziej w prawo. Przy zbyt dużej liczbie zagnieżdżeń szerokość kolumny tekstu może stać się zbyt mała do poprawnego wyświetlania treści.
+
+#### Kod źródłowy
+
+…
