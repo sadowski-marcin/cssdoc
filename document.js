@@ -1,8 +1,9 @@
 /*
 Szablon CSS dokumentu do druku
-wersja 1.2.0
+wersja 1.2
 
-Copyright © 2015-2018 by Marcin Paweł Sadowski <sadowski.marcin@icloud.com>
+Copyright © 2015-2019 by Marcin Paweł Sadowski <sadowski.marcin@icloud.com>
+https://github.com/sadowski-marcin/cssdoc
 */
 
 function fillLeft(character, number) {
