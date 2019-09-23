@@ -116,19 +116,22 @@ Do tytułowania i oddzielania rozdziałów, podrozdziałów i mniejszych partii 
 
 Włączając [_javascript_](https://github.com/sadowski-marcin/cssdoc#struktura-pliku) nagłówki od `h1` do `h4` uzupełniane będą automatycznie numeracją urzędową, np.
 
-* 1.
-	* 1.1.
-	* 1.2.
-		* 1.2.1.
-		* 1.2.2.
-	* 1.3.
-* 2.
-* 3.
-	* 3.1.
-	* 3.2.
-		* 3.2.1.
-		* 3.2.2.
-* 4.
+* Rozdział 1. (`h1`)
+	* Podrozdział 1.1. (`h2`)
+	* Podrozdział 1.2. (`h2`)
+		* 1.2.1. (`h3`)
+			* 1.2.1.1. (`h4`)
+			* 1.2.1.2. (`h4`)
+			* 1.2.1.3. (`h4`)
+		* 1.2.2. (`h3`)
+	* Podrozdział 1.3. (`h2`)
+* Rozdział 2. (`h1`)
+* Rozdział 3. (`h1`)
+	* Podrozdział 3.1. (`h2`)
+	* Podrozdział 3.2. (`h2`)
+		* 3.2.1. (`h3`)
+		* 3.2.2. (`h3`)
+* Rozdział 4. (`h1`)
 
 Nagłówki wstępu, przedmowy, zakończenia, dodatków etc. zazwyczaj nie posiadają numeracji. Aby wstrzymać dodawanie numeracji do nagłówka należy użyć klasy _nonumber_:
 
