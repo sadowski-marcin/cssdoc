@@ -16,15 +16,15 @@ _Pamiętaj!_ Specyfikacja „CSS Document” jest specyfikacją cały czas otwar
 
 Aby stosować specyfikację „CSS Document” w pierwszym kroku należy pobrać ze [strony projektu](http://github.com/sadowski-marcin/cssdoc) pliki:
 
-* _document.css_ – główny plik stylów CSS;
-* _document.js_ – implementuje funkcje automatyzujące tworzenie dokumentu (np. numerację nagłówków, rysunków i tabel) oraz pozwalające stosować odnośniki wewnątrz dokumentu.
+* [_document.css_](document.css) – główny plik stylów CSS;
+* [_document.js_](document.js) – implementuje funkcje automatyzujące tworzenie dokumentu (np. numerację nagłówków, rysunków i tabel) oraz pozwalające stosować odnośniki wewnątrz dokumentu.
 
 Dodatkowo udostępnione zostały następujące pliki mogące służyć za żywy przykład zastosowania specyfikacji „CSS Document”:
 
-* _preview.html_ – przykładowy dokument HTML;
-* _preview.pdf_ – przykładowy dokument HTML „wydrukowany” do PDF w przeglądarce Safari 12.1.2 w systemie macOS Mojave 10.14.6;
-* _img.png_ – zdjęcie kotka (przykład ilustracji w dokumencie);
-* _star.png_ – ikona gwiazdki (przykład ilustracji wstawionej w ciąg tekstu);
+* [_preview.html_](preview.html) – przykładowy dokument HTML;
+* [_preview.pdf_](preview.pdf) – przykładowy dokument HTML „wydrukowany” do PDF w przeglądarce Safari 12.1.2 w systemie macOS Mojave 10.14.6;
+* [_img.png_](img.png) – zdjęcie kotka (przykład ilustracji w dokumencie);
+* [_star.png_](star.png) – ikona gwiazdki (przykład ilustracji wstawionej w ciąg tekstu);
 
 ### Struktura pliku
 
