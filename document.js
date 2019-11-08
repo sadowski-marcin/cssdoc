@@ -173,7 +173,7 @@ window.onload = function () {
                 all[i].getElementsByClassName("bibname")[0].innerHTML = "["+fcounters[4]+"] ";
             }
         }
-        
+
         /* dopisywanie numerów nagłówków, rysunków, tabel do adnośników <a href="…" class="ref">…</a>  */
         if (toc.length > 0) {
             for (i = 0; i < all.length; i++) {
@@ -210,7 +210,7 @@ window.onload = function () {
                 }
             }
         }
-                
+
         /* tworzenie spisu treści */
         for (i = 0; i < all.length; i++) {
         	if (all[i].nodeName == "H1" || all[i].nodeName == "H2" || all[i].nodeName == "H3" || all[i].nodeName == "H4") {
@@ -234,7 +234,7 @@ window.onload = function () {
         		else if (htoc[i][0] == "H2") { itemlevel = 2; }
         		else if (htoc[i][0] == "H3") { itemlevel = 3; }
         		else { itemlevel = 4; }
-        		
+
 				if (itemlevel>toclevel) {
 					while (toclevel<itemlevel) {
 						tmp = tmp + "<ul>\n";
@@ -265,7 +265,7 @@ window.onload = function () {
 			tocdiv.innerHTML = tocdiv.innerHTML + tmp;
     	}
     }
-        
+
 	/* formatowanie kodów źródłowych <pre> */
 // 	var pres = document.getElementsByTagName("pre");
 // 	var lines, tmp, pre, firstline;

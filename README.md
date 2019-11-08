@@ -40,7 +40,7 @@ Dokumentem zgodnym ze specyfikacją „CSS Document” jest plik tekstowy z rozs
 
         <link rel="Stylesheet" type="text/css" href="document.css" />        
         <script type="text/javascript" src="document.js"></script>
-        
+
         <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
         <script type="text/x-mathjax-config">
             MathJax.Hub.Config({
@@ -253,7 +253,7 @@ Ilustracje można również zamieszczać bezpośrednio w tekście, wówczas uży
 Specyfikacja „CSS Document” zawiera predefiniowane style do formatowania tabel `table`. Wszystkie tabele rozciągane są do pełnej szerokości strony, a ponadto:
 
 * nagłówek `thead` oddzielony jest wyraźniejszą linią od pozostałych wierszy,
-* nagłówki kolumn `th` składane są z wyróżnieniem tła, pogrubieniem czcionki oraz wyśrodkowaniem tekstu, 
+* nagłówki kolumn `th` składane są z wyróżnieniem tła, pogrubieniem czcionki oraz wyśrodkowaniem tekstu,
 * wiersze „ciała” tabeli `tbody` są kolorowane naprzemiennie,
 * komórki uzyskują delikatne obramowanie,
 * komórki `td` mają zawartość wyrównaną do lewej.
@@ -444,7 +444,7 @@ Przypisy dolne tworzy się jako akapity `p` klasy _footnote_ objęte blokiem `di
 ```html
 <div class="footnotes">
     <p class="footnote" id="przypis1">To jest treść przypisu dolnego.</p>
-        
+
     <p class="footnote" id="przypis2">To jest jakiś inny przypis dolny.</p>
 </div>
 ```
@@ -504,7 +504,7 @@ Spowoduje to zaprezentowanie w formie dwukolumnowej wszystkich nagłówków od p
 Dodatkowo, nagłówki od `h1` do `h4` uzyskują funkcjonalność w postaci:
 
 * strzałki do góry „↑”, która jest linkiem powrotnym do spisu treści; strzałka ta pojawia się przy prawym marginesie, na wysokości nagłówka, po wskazaniu go kursorem myszki; strzałka ta nie jest uwidaczniana na wydruku.
-* znaku „#”, który jest linkiem do tego nagłówka i pozwala na zapisanie zakładki do tego nagłówka; znak ten pojawia po wskazaniu nagłówka kursorem myszki i nie jest uwidaczniany na wydruku. 
+* znaku „#”, który jest linkiem do tego nagłówka i pozwala na zapisanie zakładki do tego nagłówka; znak ten pojawia po wskazaniu nagłówka kursorem myszki i nie jest uwidaczniany na wydruku.
 
 W razie potrzeby można wyłączyć dodawanie wybranych nagłówków do spisu treści. Służy do tego klasa _notoc_ dodawana do tego nagłówka:
 
